@@ -49,6 +49,8 @@ const float MONSTERSPAWN_NOSPIDER = 16;
 
 const float RANDOM_WEAPON_GROUP = IT_GRENADE_LAUNCHER | IT_ROCKET_LAUNCHER | IT_LIGHTNING;
 
+const float POWERUP_REMOVE_TIME = 60; // seconds
+
 const float ZUMBI_MELEE_RANGE = 65;
 
 // global variables about the current wave

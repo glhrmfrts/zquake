@@ -1,0 +1,12 @@
+# TODO
+
+-X Next wave countdown/greater interval
+- Remove powerups after 60 seconds
+- Change wave number color in the client while waiting for next wave
+- Boss wave type
+- Minion wave type (?)
+
+# Polish
+
+- Particles to signal powerup is about to disappear
+- Particles to spawn monsters (teleport/coming out from the ground)

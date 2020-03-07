@@ -212,6 +212,27 @@ void() wavemgr_think =
         wavemgr_end_wave();
 };
 
+void() wavemgr_countdown =
+{
+    if (self.wait)
+    {
+        // print and loop
+        CenterPrintAll(strcat("Next wave in ", ftos(self.wait), " seconds...\n"));
+        self.wait = self.wait - 1;
+        self.think = wavemgr_countdown;
+        self.nextthink = time + 1.0;
+        return;
+    }
+
+    // advance to next wave
+    g_current_wave = g_current_wave + 1;
+    g_wave_active = 1;
+    WaveChanged();
+
+    self.think = wavemgr_think;
+    self.nextthink = time + 2.0;
+};
+
 void() wavemgr_next_wave =
 {
     // Give everyone bonus for finishing wave
@@ -221,23 +242,19 @@ void() wavemgr_next_wave =
         GiveCredits(player, 10 + (2 * (g_current_wave - 1)));
     }
 
-    CenterPrintAll("Advancing to next wave...\n");
-    g_current_wave = g_current_wave + 1;
-    g_wave_active = 1;
-    WaveChanged();
-
-    self.think = wavemgr_think;
-    self.nextthink = time + 2.0;
+    self.wait = 5;
+    self.think = wavemgr_countdown;
+    self.nextthink = time + 0.1;
 };
 
 void() wavemgr_start =
 {
-    g_current_wave = self.count;
-    g_wave_active = 1;
-    WaveChanged();
+    g_wave_active = 0;
+    g_current_wave = self.count - 1;
 
-    self.think = wavemgr_think;
-    self.nextthink = time + 1.0;
+    self.wait = 5;
+    self.think = wavemgr_countdown;
+    self.nextthink = time + 0.1;
 };
 
 /*QUAKED info_wavemgr

@@ -87,6 +87,7 @@ Spawn a random powerup at an origin
 void(vector org) SpawnPowerup =
 {
     if (g_current_wave < 3) return;
+    if (entity_pcontent(org)) return;
 
     local entity pup = spawn();
     pup.origin = org;
@@ -113,7 +114,11 @@ void(vector org) SpawnPowerup =
     local entity this = self;
     self = pup;
     spawn_func();
+    self.estate_use();
     self = this;
+
+    pup.think = SUB_Remove;
+    pup.nextthink = time + POWERUP_REMOVE_TIME;
 };
 
 /*
