@@ -7,64 +7,67 @@ void() shop_area_touch =
 
 	self.attack_finished = time + 2;
 
-    local string message;
+    local string msg;
     local entity t = find(world, targetname, self.target);
-
-    if (t.item == ITEM_WEAPON_SUPER_SHOTGUN)
+    if (t.count != -1 && t.state >= t.count)
+    {
+        msg = t.message;
+    }
+    else if (t.item == ITEM_WEAPON_SUPER_SHOTGUN)
     {
         if (!(other.items & IT_SUPER_SHOTGUN))
         {
-            message = "Buy Super Shotgun for Q$90";
+            msg = "Buy Super Shotgun for Q$90";
         }
         else
         {
-            message = "Buy shells for Q$45";
+            msg = "Buy shells for Q$45";
         }
     }
     else if (t.item == ITEM_WEAPON_NAILGUN)
     {
         if (!(other.items & IT_NAILGUN))
         {
-            message = "Buy Nailgun for Q$100";
+            msg = "Buy Nailgun for Q$100";
         }
         else
         {
-            message = "Buy nails for Q$50";
+            msg = "Buy nails for Q$50";
         }
     }
     else if (t.item == ITEM_WEAPON_NAILGUN)
     {
         if (!(other.items & IT_NAILGUN))
         {
-            message = "Buy Super Nailgun for Q$125";
+            msg = "Buy Super Nailgun for Q$125";
         }
         else
         {
-            message = "Buy nails for Q$50";
+            msg = "Buy nails for Q$50";
         }
     }
     else if (t.item == ITEM_WEAPON_RANDOM)
     {
-        message = "Rent weapon for Q$80";
+        msg = "Rent weapon for Q$80";
     }
     else if (t.item == ITEM_MEDKIT)
     {
-        message = "Buy medkit for Q$25";
+        msg = "Buy medkit for Q$25";
     }
     else if (t.item == ITEM_ARMOR_BASIC)
     {
-        message = "Buy basic armor for Q$50";
+        msg = "Buy basic armor for Q$50";
     }
     else if (t.item == ITEM_SILVER_KEY)
     {
-        message = strcat("Buy silver key for Q$", ftos(PRICE_SILVER_KEY));
+        msg = strcat("Buy silver key for Q$", ftos(PRICE_SILVER_KEY));
     }
     else if (t.item == ITEM_GOLD_KEY)
     {
-        message = strcat("Buy gold key for Q$", ftos(PRICE_GOLD_KEY));
+        msg = strcat("Buy gold key for Q$", ftos(PRICE_GOLD_KEY));
     }
 
-    centerprint (other, strcat(message, "\n"));
+    centerprint (other, strcat(msg, "\n"));
 	sound (other, CHAN_BODY, "misc/talk.wav", 1, ATTN_NORM);
 };
 

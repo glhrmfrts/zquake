@@ -42,6 +42,7 @@ vector(float rad) MonsterSpawnOffset =
 void(entity mon) SetupSpawnedMonster =
 {
     mon.spawnflags = MON_SPAWN_ANGRY;
+    mon.zmonster = TRUE;
 };
 
 void(vector org) SpawnZombie =
@@ -56,14 +57,16 @@ void(vector org) SpawnZombie =
     // Call monster_zombie to setup zombie entity
     local entity this = self;
     self = zomb;
-    if (r <= 0.2 && g_current_wave >= 5)
+    if (r <= 0.2 && g_current_wave >= ZOMBIEK_START_WAVE)
     {
         zomb.classname = "monster_zumbik";
+        zomb.zmonstertype = ZMONSTER_ZUMBIK;
         monster_zumbik();
     }
     else
     {
         zomb.classname = "monster_zumbi";
+        zomb.zmonstertype = ZMONSTER_ZUMBI;
         monster_zumbi();
     }
     self = this;
@@ -80,6 +83,7 @@ void(vector org) SpawnDog =
     local entity dog = spawn();
     dog.classname = "monster_dog";
     dog.origin = org;
+    dog.zmonstertype = ZMONSTER_DOG;
     SetupSpawnedMonster(dog);
 
     local entity this = self;
@@ -94,10 +98,10 @@ void(vector org) SpawnDog =
 
 void(vector org) SpawnSpider =
 {
-    // Spawn new empty entity to become dog
     local entity spider = spawn();
     spider.classname = "monster_spider";
     spider.origin = org;
+    spider.zmonstertype = ZMONSTER_SPIDER;
     SetupSpawnedMonster(spider);
 
     local entity this = self;
@@ -110,11 +114,33 @@ void(vector org) SpawnSpider =
     bprint("Spawned Spider!\n");
 };
 
+void(vector org) SpawnBoil =
+{
+    local entity mon = spawn();
+    mon.classname = "monster_boil";
+    mon.origin = org;
+    mon.zmonstertype = ZMONSTER_BOIL;
+    if (random() < 0.2)
+        mon.poisonous = TRUE;
+
+    SetupSpawnedMonster(mon);
+
+    local entity this = self;
+    self = mon;
+    monster_boil();
+    self = this;
+
+    g_boils_spawned = g_boils_spawned + 1;
+    self.enemy = mon;
+    bprint("Spawned Boil!\n");
+};
+
 void(vector org) SpawnKnight =
 {
     local entity kni = spawn();
     kni.classname = "monster_knight";
     kni.origin = org;
+    kni.zmonstertype = ZMONSTER_KNIGHT;
     SetupSpawnedMonster(kni);
 
     local entity this = self;
@@ -133,6 +159,7 @@ void(vector org) SpawnDemon =
     local entity de = spawn();
     de.classname = "monster_demon1";
     de.origin = org;
+    de.zmonstertype = ZMONSTER_DEMON;
     SetupSpawnedMonster(de);
 
     local entity this = self;
@@ -150,6 +177,16 @@ float() ShouldSpawnDogOrSpiderAnyway =
     // More chance to spawn dog if we're at the beginning of the wave
     local float prog = g_monsters_killed / g_monsters_to_spawn;
     if (prog < 0.3 && (random() > 0.75))
+        return TRUE;
+        
+    return FALSE;
+};
+
+float() ShouldSpawnBoilAnyway =
+{
+    // More chance to spawn boil if we're at the middle of the wave
+    local float prog = g_monsters_killed / g_monsters_to_spawn;
+    if (prog > 0.2 && prog < 0.8 && (random() > 0.75))
         return TRUE;
         
     return FALSE;
@@ -177,6 +214,8 @@ float() ShouldSpawnDemonAnyway =
 
 float(entity ms) CalcExtraSpiders =
 {
+    if (g_wave_type == WAVE_BOSS) return 0;
+
     // Use the spider_mincount field as extra for a specific monster spawn
     return floor(ms.spider_mincount * g_current_wave);
 };
@@ -191,6 +230,7 @@ void() ms_think =
     if (g_zombies_spawned >= g_zombies_to_spawn &&
         g_dogs_spawned >= g_dogs_to_spawn &&
         g_spiders_spawned >= g_spiders_to_spawn &&
+        g_boils_spawned >= g_boils_to_spawn &&
         g_knights_spawned >= g_knights_to_spawn &&
         g_demons_spawned >= g_demons_to_spawn)
     { 
@@ -207,6 +247,7 @@ void() ms_think =
         local float kni_enabled = !(self.spawnflags & MONSTERSPAWN_NOKNIGHT);
         local float zomb_enabled = !(self.spawnflags & MONSTERSPAWN_NOZOMBIE);
         local float spi_enabled = !(self.spawnflags & MONSTERSPAWN_NOSPIDER);
+        local float boil_enabled = !(self.spawnflags & MONSTERSPAWN_NOBOIL);
         local vector neworigin = self.origin + MonsterSpawnOffset(self.radius);
         if (entity_pcontent(neworigin)) continue; // try again
 
@@ -234,11 +275,19 @@ void() ms_think =
                 spawned = TRUE;
             }
         }
-        else if (kni_enabled && (rchance > 0.8 || ShouldSpawnKnightAnyway()))
+        else if (kni_enabled && (rchance > 0.83 || ShouldSpawnKnightAnyway()))
         {
             if (g_knights_spawned < g_knights_to_spawn)
             {
                 SpawnKnight(neworigin);
+                spawned = TRUE;
+            }
+        }
+        else if (boil_enabled && (rchance > 0.75 || ShouldSpawnBoilAnyway()))
+        {
+            if (g_boils_spawned < g_boils_to_spawn)
+            {
+                SpawnBoil(neworigin);
                 spawned = TRUE;
             }
         }
@@ -283,7 +332,7 @@ void() ms_use =
     ms_set_next_think();
 };
 
-/*QUAKED info_monster_spawn (0 0.5 0.8) (-8 -8 -8) (8 8 8) NoZombie NoDog NoKnight NoDemon
+/*QUAKED info_monster_spawn (0 0.5 0.8) (-8 -8 -8) (8 8 8) NOZOMBIE NODOG NOKNIGHT NODEMON NOSPIDER
 A monster spawner
 */
 void() info_monster_spawn =

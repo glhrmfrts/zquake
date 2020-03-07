@@ -1,10 +1,21 @@
 const float EV_FLOAT = 2;
 
+// client stats
 const float STAT_WAVENUM = 33;
 const float STAT_CREDIT = 34;
 const float STAT_CREDITDIFF = 35;
 const float STAT_WAVEACTIVE = 36;
 
+// monster types, defined to be faster than looking up classname and mod-agnostic
+const float ZMONSTER_ZUMBI = 0; // Custom zombie
+const float ZMONSTER_ZUMBIK = 1; // Custom zombie knight
+const float ZMONSTER_DOG = 2; // id dog
+const float ZMONSTER_SPIDER = 3; // A.D. Spider
+const float ZMONSTER_BOIL = 4; // A.D. Boil
+const float ZMONSTER_KNIGHT = 5; // id knight
+const float ZMONSTER_DEMON = 6; // id demon
+
+// base monster parameters
 const float BASE_ZOMBIE_HEALTH = 30;
 const float BASE_ZOMBIE_MINTIME = 5.0;
 const float BASE_ZOMBIE_MAXTIME = 15.0;
@@ -14,10 +25,19 @@ const float BASE_DOG_MINCOUNT = 1;
 const float BASE_DOG_MAXCOUNT = 3;
 const float BASE_SPIDER_MINCOUNT = 4;
 const float BASE_SPIDER_MAXCOUNT = 12;
+const float BASE_BOIL_MINCOUNT = 2;
+const float BASE_BOIL_MAXCOUNT = 4;
 const float BASE_KNIGHT_MINCOUNT = 1;
 const float BASE_KNIGHT_MAXCOUNT = 3;
 const float BASE_DEMON_MINCOUNT = 1;
 const float BASE_DEMON_MAXCOUNT = 2;
+
+const float DOG_START_WAVE = 3;
+const float SPIDER_START_WAVE = 4;
+const float ZOMBIEK_START_WAVE = 5;
+const float BOIL_START_WAVE = 6;
+const float KNIGHT_START_WAVE = 8;
+const float DEMON_START_WAVE = 10;
 
 const float ITEM_WEAPON_SUPER_SHOTGUN = 0;
 const float ITEM_WEAPON_NAILGUN = 1;
@@ -47,6 +67,7 @@ const float MONSTERSPAWN_NODOG = 2;
 const float MONSTERSPAWN_NOKNIGHT = 4;
 const float MONSTERSPAWN_NODEMON = 8;
 const float MONSTERSPAWN_NOSPIDER = 16;
+const float MONSTERSPAWN_NOBOIL = 32;
 
 // wave types
 const float WAVE_DEFAULT = 0;
@@ -75,6 +96,9 @@ float g_dogs_killed;
 float g_spiders_to_spawn;
 float g_spiders_spawned;
 float g_spiders_killed;
+float g_boils_to_spawn;
+float g_boils_spawned;
+float g_boils_killed;
 float g_demons_to_spawn;
 float g_demons_spawned;
 float g_demons_killed;
@@ -85,6 +109,25 @@ float g_monsters_to_spawn;
 float g_monsters_spawned;
 float g_monsters_killed;
 float g_monster_killed_time;
+float g_force_wave_end;
+
+.float monster_mintime;
+.float monster_maxtime;
+.float zombie_health;
+.float zombie_mincount;
+.float zombie_maxcount;
+.float dog_mincount;
+.float dog_maxcount;
+.float spider_mincount;
+.float spider_maxcount;
+.float boil_mincount;
+.float boil_maxcount;
+.float knight_mincount;
+.float knight_maxcount;
+.float demon_mincount;
+.float demon_maxcount;
+.float zmonster; // flag to indicate this is a z-monster
+.float zmonstertype; // specific z-monster type
 
 void(float num, float type, .__variant fld) clientstat = #232;
 

@@ -240,7 +240,7 @@ void()	demon1_death9	=[	$death9, demon1_death9 ] {monster_deadbody_check();};
 //----------------------------------------------------------------------
 void() demon1_die =
 {
-	ZDemonDie();
+	ZMonsterDie();
 	
 	// Pre-check routine to tidy up extra entities
 	monster_death_precheck();

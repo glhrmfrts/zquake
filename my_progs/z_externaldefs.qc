@@ -10,16 +10,4 @@ void() ZClientConnect;
 
 void() ZPlayerPreThink;
 
-void() ZZumbiDie;
-
-void() ZZumbiKnightDie;
-
-void() ZDogDie;
-
-void() ZSpiderDie;
-
-void() ZKnightDie;
-
-void() ZDemonDie;
-
-float(entity act) ZDoorShouldOpen;
+void() ZMonsterDie;

@@ -1,46 +1,10 @@
-float g_force_wave_end;
-
-.float monster_mintime;
-.float monster_maxtime;
-.float zombie_health;
-.float zombie_mincount;
-.float zombie_maxcount;
-.float dog_mincount;
-.float dog_maxcount;
-.float spider_mincount;
-.float spider_maxcount;
-.float knight_mincount;
-.float knight_maxcount;
-.float demon_mincount;
-.float demon_maxcount;
-
 void() wavemgr_next_wave;
 
 void() EndWaveCheat =
 {
     g_force_wave_end = 1;
     local entity zomb = world;
-    while ((zomb = find(zomb, classname, "monster_zumbi")))
-    {
-        remove(zomb);
-    }
-    while ((zomb = find(zomb, classname, "monster_zumbik")))
-    {
-        remove(zomb);
-    }
-    while ((zomb = find(zomb, classname, "monster_dog")))
-    {
-        remove(zomb);
-    }
-    while ((zomb = find(zomb, classname, "monster_spider")))
-    {
-        remove(zomb);
-    }
-    while ((zomb = find(zomb, classname, "monster_demon1")))
-    {
-        remove(zomb);
-    }
-    while ((zomb = find(zomb, classname, "monster_knight")))
+    while ((zomb = findfloat(zomb, zmonster, TRUE)))
     {
         remove(zomb);
     }
@@ -53,11 +17,11 @@ void() SetupWave =
 
     // Dogs generation
     g_dogs_to_spawn = 0;
-    if (g_current_wave >= 3)
+    if (g_current_wave >= DOG_START_WAVE)
     {
-        if (random() > 0.25 || g_current_wave == 3)
+        if (random() > 0.25 || g_current_wave == DOG_START_WAVE)
         {
-            g_dogs_to_spawn = floor(RandomBetween(self.dog_mincount + (0.5*(g_current_wave - 3)), self.dog_maxcount + (1*(g_current_wave - 3))));
+            g_dogs_to_spawn = floor(RandomBetween(self.dog_mincount + (0.5*(g_current_wave - DOG_START_WAVE)), self.dog_maxcount + (1*(g_current_wave - DOG_START_WAVE))));
         }
         else
         {
@@ -67,11 +31,11 @@ void() SetupWave =
 
     // Spiders generation
     g_spiders_to_spawn = 0;
-    if (g_current_wave >= 4)
+    if (g_current_wave >= SPIDER_START_WAVE)
     {
-        if (g_dogs_to_spawn <= 4)
+        if (g_dogs_to_spawn <= SPIDER_START_WAVE)
         {
-            g_spiders_to_spawn = floor(RandomBetween(self.spider_mincount + (0.5*(g_current_wave - 4)), self.spider_maxcount + (1*(g_current_wave - 4))));
+            g_spiders_to_spawn = floor(RandomBetween(self.spider_mincount + (0.5*(g_current_wave - SPIDER_START_WAVE)), self.spider_maxcount + (1*(g_current_wave - SPIDER_START_WAVE))));
         }
         else
         {
@@ -79,27 +43,41 @@ void() SetupWave =
         }
     }
 
-    // Knights generation
-    g_knights_to_spawn = 0;
-    if (g_current_wave >= 8)
+    // Boils generation
+    g_boils_to_spawn = 0;
+    if (g_current_wave >= BOIL_START_WAVE)
     {
-        if (random() > 0.05)
+        if (random() > 0.25 || g_current_wave == BOIL_START_WAVE)
         {
-            g_knights_to_spawn = floor(RandomBetween(self.knight_mincount + (0.5*(g_current_wave - 6)), self.knight_maxcount + (1*(g_current_wave - 6))));
+            g_boils_to_spawn = floor(RandomBetween(self.boil_mincount + (0.5*(g_current_wave - BOIL_START_WAVE)), self.boil_maxcount + (1*(g_current_wave - BOIL_START_WAVE))));
         }
         else
         {
-            g_knights_to_spawn = self.knight_mincount + (1*(g_current_wave - 6));
+            g_boils_to_spawn = 0;
+        }
+    }
+
+    // Knights generation
+    g_knights_to_spawn = 0;
+    if (g_current_wave >= KNIGHT_START_WAVE)
+    {
+        if (random() > 0.05)
+        {
+            g_knights_to_spawn = floor(RandomBetween(self.knight_mincount + (0.5*(g_current_wave - KNIGHT_START_WAVE)), self.knight_maxcount + (1*(g_current_wave - KNIGHT_START_WAVE))));
+        }
+        else
+        {
+            g_knights_to_spawn = self.knight_mincount + (1*(g_current_wave - KNIGHT_START_WAVE));
         }
     }
 
     // Demons generation
     g_demons_to_spawn = 0;
-    if (g_current_wave >= 10)
+    if (g_current_wave >= DEMON_START_WAVE)
     {
         if (random() > 0.2)
         {
-            g_demons_to_spawn = floor(RandomBetween(self.demon_mincount + (0.25*(g_current_wave - 10)), self.demon_maxcount + (0.5*(g_current_wave - 10))));
+            g_demons_to_spawn = floor(RandomBetween(self.demon_mincount + (0.25*(g_current_wave - DEMON_START_WAVE)), self.demon_maxcount + (0.5*(g_current_wave - DEMON_START_WAVE))));
         }
         else
         {
@@ -114,9 +92,10 @@ void() SetupBossWave =
     g_spiders_to_spawn = 0;
     g_zombies_to_spawn = 0;
     g_knights_to_spawn = 0;
+    g_boils_to_spawn = 0;
     g_demons_to_spawn = 0;
 
-    if (g_current_wave == 10)
+    if (g_current_wave == DEMON_START_WAVE)
     {
         g_demons_to_spawn = self.demon_maxcount * 2;
         g_boss_delay_time = time + 10.0;
@@ -137,11 +116,12 @@ void() WaveChanged =
     g_monster_mintime = self.monster_mintime - (0.5 * g_current_wave * RandomBetween(0.5, 1.5));
     g_monster_maxtime = self.monster_maxtime - (0.3 * g_current_wave * RandomBetween(0.5, 1.5));
 
-    g_zombie_health = self.zombie_health + (6 * g_current_wave);
+    g_zombie_health = floor(self.zombie_health + (4 * g_current_wave));
 
     g_zombies_spawned = 0;
     g_dogs_spawned = 0;
     g_knights_spawned = 0;
+    g_boils_spawned = 0;
     g_demons_spawned = 0;
     g_spiders_spawned = 0;
     g_monsters_spawned = 0;
@@ -149,11 +129,14 @@ void() WaveChanged =
     g_zombies_killed = 0;
     g_dogs_killed = 0;
     g_knights_killed = 0;
+    g_boils_killed = 0;
     g_demons_killed = 0;
     g_spiders_killed = 0;
     g_monsters_killed = 0;
 
-    g_monsters_to_spawn = g_zombies_to_spawn + g_dogs_to_spawn + g_demons_to_spawn + g_knights_to_spawn + g_spiders_to_spawn;
+    g_monsters_to_spawn = (
+        g_zombies_to_spawn + g_dogs_to_spawn + g_demons_to_spawn + g_knights_to_spawn + g_spiders_to_spawn + g_boils_to_spawn
+    );
 
     g_force_wave_end = 0;
 
@@ -180,8 +163,6 @@ void() wavemgr_think =
         return;
     }
 
-    g_monsters_killed = g_zombies_killed + g_dogs_killed + g_spiders_killed + g_knights_killed + g_demons_killed;
-
     self.nextthink = time + 1.0;
 
     if (!g_wave_active) return;
@@ -196,47 +177,7 @@ void() wavemgr_think =
 
     local float num_zombies = 0;
     local entity zomb = world;
-    while ((zomb = find(zomb, classname, "monster_zumbi")))
-    {
-        if (zomb.health > 0.0)
-        {
-            num_zombies = 1;
-            break;
-        }
-    }
-    while ((zomb = find(zomb, classname, "monster_zumbik")))
-    {
-        if (zomb.health > 0.0)
-        {
-            num_zombies = 1;
-            break;
-        }
-    }
-    while ((zomb = find(zomb, classname, "monster_dog")))
-    {
-        if (zomb.health > 0.0)
-        {
-            num_zombies = 1;
-            break;
-        }
-    }
-    while ((zomb = find(zomb, classname, "monster_spider")))
-    {
-        if (zomb.health > 0.0)
-        {
-            num_zombies = 1;
-            break;
-        }
-    }
-    while ((zomb = find(zomb, classname, "monster_demon1")))
-    {
-        if (zomb.health > 0.0)
-        {
-            num_zombies = 1;
-            break;
-        }
-    }
-    while ((zomb = find(zomb, classname, "monster_knight")))
+    while ((zomb = findfloat(zomb, zmonster, TRUE)))
     {
         if (zomb.health > 0.0)
         {
@@ -323,6 +264,8 @@ void() info_wavemgr =
     if (!self.dog_maxcount) self.dog_maxcount = BASE_DOG_MAXCOUNT;
     if (!self.spider_mincount) self.spider_mincount = BASE_SPIDER_MINCOUNT;
     if (!self.spider_maxcount) self.spider_maxcount = BASE_SPIDER_MAXCOUNT;
+    if (!self.boil_mincount) self.boil_mincount = BASE_BOIL_MINCOUNT;
+    if (!self.boil_maxcount) self.boil_maxcount = BASE_BOIL_MAXCOUNT;
     if (!self.knight_mincount) self.knight_mincount = BASE_KNIGHT_MINCOUNT;
     if (!self.knight_maxcount) self.knight_maxcount = BASE_KNIGHT_MAXCOUNT;
     if (!self.demon_mincount) self.demon_mincount = BASE_DEMON_MINCOUNT;

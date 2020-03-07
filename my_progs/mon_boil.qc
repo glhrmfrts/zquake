@@ -318,6 +318,8 @@ void() boil_explode = {
 //----------------------------------------------------------------------
 void() boil_die =
 {
+	ZMonsterDie();
+
 	// Upward fountain of gibs
 	self.max_health = MON_GIBFOUNTAIN;
 	monster_death_precheck();

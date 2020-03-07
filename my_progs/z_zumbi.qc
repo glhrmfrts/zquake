@@ -617,7 +617,7 @@ void(float type) zumbi_sound =
 //============================================================================
 void() zumbi_die =
 {
-	ZZumbiDie(); // callback to zquake
+	ZMonsterDie(); // callback to zquake
 	self.health = self.gibhealth; // Force gib
 	monster_death_precheck();
 };

@@ -3,7 +3,8 @@
 -X Next wave countdown/greater interval
 -X Remove powerups after 60 seconds
 -X Change wave number color in the client while waiting for next wave
-- Boss wave type
+-X Boss wave type
+- Boil monster type
 - Minion wave type (?)
 
 # Polish

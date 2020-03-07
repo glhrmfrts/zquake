@@ -522,7 +522,7 @@ void() spider_die10		=[	$death19,	spider_die10] {monster_deadbody_check();};
 //----------------------------------------------------------------------------
 void() spider_die = 
 {
-	ZSpiderDie();
+	ZMonsterDie();
 	
 	// Spiders are small, gibs don't bounce far
 	self.max_health = MON_NOGIBVELOCITY;
