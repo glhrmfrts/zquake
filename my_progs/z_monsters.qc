@@ -12,6 +12,7 @@ void() ZZumbiDie =
 		GiveCredits(self.enemy, earned);
 	}
 	g_zombies_killed = g_zombies_killed + 1;
+	g_monster_killed_time = time;
 
 	if (random() < 0.03)
 		SpawnPowerup(self.origin);
@@ -30,6 +31,7 @@ void () ZZumbiKnightDie =
 		GiveCredits(self.enemy, earned);
 	}
 	g_zombies_killed = g_zombies_killed + 1;
+	g_monster_killed_time = time;
 
     if (random() < 0.04)
 		SpawnPowerup(self.origin);
@@ -48,6 +50,7 @@ void() ZDogDie =
 		GiveCredits(self.enemy, earned);
 	}
 	g_dogs_killed = g_dogs_killed + 1;
+	g_monster_killed_time = time;
 
     if (random() < 0.01)
 		SpawnPowerup(self.origin);
@@ -66,6 +69,7 @@ void() ZSpiderDie =
 		GiveCredits(self.enemy, earned);
 	}
 	g_spiders_killed = g_spiders_killed + 1;
+	g_monster_killed_time = time;
 
     if (random() < 0.01)
 		SpawnPowerup(self.origin);
@@ -84,6 +88,7 @@ void() ZKnightDie =
 		GiveCredits(self.enemy, earned);
 	}
 	g_knights_killed = g_knights_killed + 1;
+	g_monster_killed_time = time;
 
     if (random() < 0.03)
 		SpawnPowerup(self.origin);
@@ -102,6 +107,7 @@ void() ZDemonDie =
 		GiveCredits(self.enemy, earned);
 	}
 	g_demons_killed = g_demons_killed + 1;
+	g_monster_killed_time = time;
 
 	if (random() < 0.06)
 		SpawnPowerup(self.origin);

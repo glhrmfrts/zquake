@@ -26,6 +26,7 @@ void() ZClientConnect =
 void() ZPlayerPreThink =
 {
     self.wavenum = g_current_wave;
+    self.waveactive = g_wave_active;
 
     // Clear creditdiff
     if (self.creditdifftime < time)

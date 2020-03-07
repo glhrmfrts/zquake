@@ -1,8 +1,8 @@
 # TODO
 
 -X Next wave countdown/greater interval
-- Remove powerups after 60 seconds
-- Change wave number color in the client while waiting for next wave
+-X Remove powerups after 60 seconds
+-X Change wave number color in the client while waiting for next wave
 - Boss wave type
 - Minion wave type (?)
 

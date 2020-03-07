@@ -59,6 +59,7 @@ void() ZHud_Draw =
     local float wavenum = getstati(STAT_WAVENUM);
     local float credit = getstati(STAT_CREDIT);
     local float creditdiff = getstati(STAT_CREDITDIFF);
+	local float waveactive = getstati(STAT_WAVEACTIVE);
     local float sbar_alpha = 1;
 
     if (creditdiff > 0)
@@ -75,11 +76,15 @@ void() ZHud_Draw =
     Sbar_DrawString('-248 48', "Q$", 1, '8 8 0', '1 .5 .2');
     Sbar_DrawString('-224 48', ftos(credit), 1, '8 8 0', '1 .5 .2');
 
-    Sbar_DrawString('-260 24', "W", 1, '8 8 0', '.7 0 0');
-	if (wavenum >= 100)
-		Sbar_DrawNum('-248 24', wavenum, 3, 2, sbar_alpha);
-	else if (wavenum >= 10)
-		Sbar_DrawNum('-248 24', wavenum, 2, 2, sbar_alpha);
+	if (waveactive)
+		Sbar_DrawString('-260 24', "W", 1, '8 8 0', '.7 0 0');
 	else
-		Sbar_DrawNum('-248 24', wavenum, 1, 2, sbar_alpha);
+		Sbar_DrawString('-260 24', "W", 1, '8 8 0', '1 .5 .2');
+
+	if (wavenum >= 100)
+		Sbar_DrawNum('-248 24', wavenum, 3, waveactive, sbar_alpha);
+	else if (wavenum >= 10)
+		Sbar_DrawNum('-248 24', wavenum, 2, waveactive, sbar_alpha);
+	else
+		Sbar_DrawNum('-248 24', wavenum, 1, waveactive, sbar_alpha);
 };

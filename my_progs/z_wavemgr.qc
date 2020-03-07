@@ -137,6 +137,7 @@ void() wavemgr_end_wave =
     g_wave_active = 0;
     CenterPrintAll("Wave completed!\n");
 
+    self.attack_finished = 0;
     self.think = wavemgr_next_wave;
     self.nextthink = time + 3.0;
 };
@@ -155,7 +156,14 @@ void() wavemgr_think =
     self.nextthink = time + 1.0;
 
     if (!g_wave_active) return;
-    if (g_zombies_spawned < g_zombies_to_spawn) return;
+    if (g_monsters_spawned < g_monsters_to_spawn) return;
+
+    local float mondiff = g_monsters_spawned - g_monsters_killed;
+    if ((mondiff <= 3) && (time - g_monster_killed_time <= 3) && self.attack_finished <= time)
+    {
+        CenterPrintAll(strcat("Only ", ftos(mondiff), " more to go...\n"));
+        self.attack_finished = time + 3.0;
+    }
 
     local float num_zombies = 0;
     local entity zomb = world;
@@ -230,7 +238,7 @@ void() wavemgr_countdown =
     WaveChanged();
 
     self.think = wavemgr_think;
-    self.nextthink = time + 2.0;
+    self.nextthink = time + 1.0;
 };
 
 void() wavemgr_next_wave =
@@ -269,6 +277,7 @@ void() info_wavemgr =
     clientstat(STAT_WAVENUM, EV_FLOAT, wavenum);
     clientstat(STAT_CREDIT, EV_FLOAT, credit);
     clientstat(STAT_CREDITDIFF, EV_FLOAT, creditdiff);
+    clientstat(STAT_WAVEACTIVE, EV_FLOAT, waveactive);
 
     self.solid = SOLID_NOT;
     self.movetype = MOVETYPE_NONE;

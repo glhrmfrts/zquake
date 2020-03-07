@@ -3,6 +3,7 @@ const float EV_FLOAT = 2;
 const float STAT_WAVENUM = 33;
 const float STAT_CREDIT = 34;
 const float STAT_CREDITDIFF = 35;
+const float STAT_WAVEACTIVE = 36;
 
 const float BASE_ZOMBIE_HEALTH = 30;
 const float BASE_ZOMBIE_MINTIME = 5.0;
@@ -77,6 +78,7 @@ float g_knights_killed;
 float g_monsters_to_spawn;
 float g_monsters_spawned;
 float g_monsters_killed;
+float g_monster_killed_time;
 
 void(float num, float type, .__variant fld) clientstat = #232;
 
