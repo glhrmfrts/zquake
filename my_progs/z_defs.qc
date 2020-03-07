@@ -48,6 +48,10 @@ const float MONSTERSPAWN_NOKNIGHT = 4;
 const float MONSTERSPAWN_NODEMON = 8;
 const float MONSTERSPAWN_NOSPIDER = 16;
 
+// wave types
+const float WAVE_DEFAULT = 0;
+const float WAVE_BOSS = 1;
+
 const float RANDOM_WEAPON_GROUP = IT_GRENADE_LAUNCHER | IT_ROCKET_LAUNCHER | IT_LIGHTNING;
 
 const float POWERUP_REMOVE_TIME = 60; // seconds
@@ -57,9 +61,11 @@ const float ZUMBI_MELEE_RANGE = 65;
 // global variables about the current wave
 float g_current_wave;
 float g_wave_active;
+float g_wave_type;
+float g_boss_delay_time;
 float g_zombie_health;
-float g_zombie_mintime;
-float g_zombie_maxtime;
+float g_monster_mintime;
+float g_monster_maxtime;
 float g_zombies_to_spawn;
 float g_zombies_spawned;
 float g_zombies_killed;

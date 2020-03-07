@@ -1,8 +1,8 @@
 float g_force_wave_end;
 
+.float monster_mintime;
+.float monster_maxtime;
 .float zombie_health;
-.float zombie_mintime;
-.float zombie_maxtime;
 .float zombie_mincount;
 .float zombie_maxcount;
 .float dog_mincount;
@@ -46,8 +46,11 @@ void() EndWaveCheat =
     }
 };
 
-void() WaveChanged =
+void() SetupWave =
 {
+    // Zombies generation
+    g_zombies_to_spawn = floor(RandomBetween(self.zombie_mincount + (1*g_current_wave), self.zombie_maxcount + (2*g_current_wave)));
+
     // Dogs generation
     g_dogs_to_spawn = 0;
     if (g_current_wave >= 3)
@@ -103,12 +106,38 @@ void() WaveChanged =
             g_demons_to_spawn = self.demon_mincount;
         }
     }
+};
 
-    // Zombies generation
-    g_zombies_to_spawn = floor(RandomBetween(self.zombie_mincount + (1*g_current_wave), self.zombie_maxcount + (2*g_current_wave)));
+void() SetupBossWave =
+{
+    g_dogs_to_spawn = 0;
+    g_spiders_to_spawn = 0;
+    g_zombies_to_spawn = 0;
+    g_knights_to_spawn = 0;
+    g_demons_to_spawn = 0;
+
+    if (g_current_wave == 10)
+    {
+        g_demons_to_spawn = self.demon_maxcount * 2;
+        g_boss_delay_time = time + 10.0;
+    }
+};
+
+void() WaveChanged =
+{
+    g_wave_type = WAVE_DEFAULT;
+    if (g_current_wave == 10)
+        g_wave_type = WAVE_BOSS;
+
+    if (g_wave_type == WAVE_BOSS)
+        SetupBossWave();
+    else
+        SetupWave();
+
+    g_monster_mintime = self.monster_mintime - (0.5 * g_current_wave * RandomBetween(0.5, 1.5));
+    g_monster_maxtime = self.monster_maxtime - (0.3 * g_current_wave * RandomBetween(0.5, 1.5));
+
     g_zombie_health = self.zombie_health + (6 * g_current_wave);
-    g_zombie_mintime = self.zombie_mintime - (0.5 * g_current_wave * RandomBetween(0.5, 1.5));
-    g_zombie_maxtime = self.zombie_maxtime - (0.3 * g_current_wave * RandomBetween(0.5, 1.5));
 
     g_zombies_spawned = 0;
     g_dogs_spawned = 0;
@@ -128,8 +157,8 @@ void() WaveChanged =
 
     g_force_wave_end = 0;
 
-    if (g_zombie_mintime < 1.0) g_zombie_mintime = 1.0;
-    if (g_zombie_maxtime < 3.0) g_zombie_maxtime = 3.0;
+    if (g_monster_mintime < 1.0) g_monster_mintime = 1.0;
+    if (g_monster_maxtime < 3.0) g_monster_maxtime = 3.0;
 };
 
 void() wavemgr_end_wave =
@@ -286,8 +315,8 @@ void() info_wavemgr =
 
     if (!self.count) self.count = 1;
     if (!self.zombie_health) self.zombie_health = BASE_ZOMBIE_HEALTH;
-    if (!self.zombie_mintime) self.zombie_mintime = BASE_ZOMBIE_MINTIME;
-    if (!self.zombie_maxtime) self.zombie_maxtime = BASE_ZOMBIE_MAXTIME;
+    if (!self.monster_mintime) self.monster_mintime = BASE_ZOMBIE_MINTIME;
+    if (!self.monster_maxtime) self.monster_maxtime = BASE_ZOMBIE_MAXTIME;
     if (!self.zombie_mincount) self.zombie_mincount = BASE_ZOMBIE_MINCOUNT;
     if (!self.zombie_maxcount) self.zombie_maxcount = BASE_ZOMBIE_MAXCOUNT;
     if (!self.dog_mincount) self.dog_mincount = BASE_DOG_MINCOUNT;

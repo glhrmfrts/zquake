@@ -6,8 +6,8 @@ void() ms_think;
 
 void() ms_set_next_think =
 {
-    local float min = g_zombie_mintime;
-    local float max = g_zombie_maxtime;
+    local float min = g_monster_mintime;
+    local float max = g_monster_maxtime;
     local float next_time = min + (random() * (max - min));
     self.nextthink = time + next_time;
 
@@ -185,6 +185,7 @@ void() ms_think =
 {
     // If the wave is not active or this monster spawn is disabled, skip
     if (!g_wave_active || !self.state) { self.nextthink = time + 0.1; return; }
+    if (g_wave_type == WAVE_BOSS && time < g_boss_delay_time) { self.nextthink = time + 0.1; return; }
 
     // If all the monsters that should spawn are already spawned, skip
     if (g_zombies_spawned >= g_zombies_to_spawn &&
