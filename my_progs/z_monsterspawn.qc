@@ -57,7 +57,7 @@ void(vector org) SpawnZombie =
     // Call monster_zombie to setup zombie entity
     local entity this = self;
     self = zomb;
-    if (r <= 0.2 && g_current_wave >= ZOMBIEK_START_WAVE)
+    if (r <= 0.2 && g_current_wave >= ZOMBIEK_START_WAVE && g_wave_type != WAVE_ZOMBIE)
     {
         zomb.classname = "monster_zumbik";
         zomb.zmonstertype = ZMONSTER_ZUMBIK;

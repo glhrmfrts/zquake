@@ -11,3 +11,7 @@ void() ZClientConnect;
 void() ZPlayerPreThink;
 
 void() ZMonsterDie;
+
+float(float v) ZRunSpeedIncrease;
+
+void() EndWaveCheat;

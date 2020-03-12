@@ -4,8 +4,13 @@
 -X Remove powerups after 60 seconds
 -X Change wave number color in the client while waiting for next wave
 -X Boss wave type
-- Boil monster type
+-X Boil monster type
+-X Make boil faster as waves advances
 - Minion wave type (?)
+- Fix and finish Cemetery map
+- Investigate coop gameplay (check everyone is dead and limit respawn and so on)
+- Start working on another map (farm?), inspired by DUSK and that map from hwjam2
+- Ask community for feedback
 
 # Polish
 

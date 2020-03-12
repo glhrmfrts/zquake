@@ -72,6 +72,7 @@ const float MONSTERSPAWN_NOBOIL = 32;
 // wave types
 const float WAVE_DEFAULT = 0;
 const float WAVE_BOSS = 1;
+const float WAVE_ZOMBIE = 2;
 
 const float RANDOM_WEAPON_GROUP = IT_GRENADE_LAUNCHER | IT_ROCKET_LAUNCHER | IT_LIGHTNING;
 

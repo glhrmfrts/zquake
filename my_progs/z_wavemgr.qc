@@ -102,19 +102,46 @@ void() SetupBossWave =
     }
 };
 
+void() SetupZombieWave =
+{
+    g_dogs_to_spawn = 0;
+    g_spiders_to_spawn = 0;
+    g_zombies_to_spawn = 0;
+    g_knights_to_spawn = 0;
+    g_boils_to_spawn = 0;
+    g_demons_to_spawn = 0;
+
+    g_zombies_to_spawn = floor(RandomBetween(self.zombie_mincount + (1*g_current_wave), self.zombie_maxcount + (2*g_current_wave)));
+    g_zombies_to_spawn *= floor(RandomBetween(0.25 * (g_current_wave * 0.5), 0.4 * (g_current_wave * 0.5)));
+
+    g_monster_mintime *= floor(RandomBetween(0.5, 0.8));
+    g_monster_maxtime *= floor(RandomBetween(0.5, 0.8));
+};
+
 void() WaveChanged =
 {
+    local float lastwave = g_wave_type;
+
+    // Decide which type of wave we are gonna have
     g_wave_type = WAVE_DEFAULT;
-    if (g_current_wave == 10)
+    if (g_current_wave == 10) {
         g_wave_type = WAVE_BOSS;
+    }
+    else if (g_current_wave > 10 && lastwave != WAVE_ZOMBIE && (random() < 0.95)) {
+        g_wave_type = WAVE_ZOMBIE;
+    }
 
-    if (g_wave_type == WAVE_BOSS)
-        SetupBossWave();
-    else
-        SetupWave();
-
+    // Setup monster spawning time
     g_monster_mintime = self.monster_mintime - (0.5 * g_current_wave * RandomBetween(0.5, 1.5));
     g_monster_maxtime = self.monster_maxtime - (0.3 * g_current_wave * RandomBetween(0.5, 1.5));
+
+    // Setup the wave accordingly
+    if (g_wave_type == WAVE_BOSS)
+        SetupBossWave();
+    else if (g_wave_type == WAVE_ZOMBIE)
+        SetupZombieWave();
+    else
+        SetupWave();
 
     g_zombie_health = floor(self.zombie_health + (4 * g_current_wave));
 
@@ -142,6 +169,13 @@ void() WaveChanged =
 
     if (g_monster_mintime < 1.0) g_monster_mintime = 1.0;
     if (g_monster_maxtime < 3.0) g_monster_maxtime = 3.0;
+
+    dprint("will spawn ");dprint(ftos(g_zombies_to_spawn));dprint(" zombies\n");
+    dprint("will spawn ");dprint(ftos(g_dogs_to_spawn));dprint(" dogs\n");
+    dprint("will spawn ");dprint(ftos(g_spiders_to_spawn));dprint(" spiders\n");
+    dprint("will spawn ");dprint(ftos(g_boils_to_spawn));dprint(" boils\n");
+    dprint("will spawn ");dprint(ftos(g_knights_to_spawn));dprint(" knights\n");
+    dprint("will spawn ");dprint(ftos(g_demons_to_spawn));dprint(" demons\n");
 };
 
 void() wavemgr_end_wave =
@@ -253,6 +287,8 @@ void() info_wavemgr =
     self.movetype = MOVETYPE_NONE;
     self.think = wavemgr_start;
     self.nextthink = time + 1.0;
+
+    self.count = 24;
 
     if (!self.count) self.count = 1;
     if (!self.zombie_health) self.zombie_health = BASE_ZOMBIE_HEALTH;

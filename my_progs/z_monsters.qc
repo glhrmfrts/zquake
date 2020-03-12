@@ -104,3 +104,9 @@ void() ZMonsterDie =
 	if (random() < g_monster_pup_chance)
 		SpawnPowerup(self.origin);
 };
+
+float(float v) ZRunSpeedIncrease =
+{
+	// return speed increase for zombie based on current wave
+	return v * (g_current_wave / 15.0);
+};

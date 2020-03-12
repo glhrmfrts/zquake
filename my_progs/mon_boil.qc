@@ -68,14 +68,14 @@ void() boil_walk7 = [ $run7, boil_walk8 ] {ai_walk(8);};
 void() boil_walk8 = [ $run8, boil_walk1 ] {ai_walk(4);};*/
 
 //============================================================================
-void() boil_run1 = [ $run1, boil_run2 ] {monster_footstep(TRUE);ai_run(4);};
-void() boil_run2 = [ $run2, boil_run3 ] {monster_idle_sound(); ai_run(16);};
-void() boil_run3 = [ $run3, boil_run4 ] {ai_run(8);};
-void() boil_run4 = [ $run4, boil_run5 ] {ai_run(4);};
-void() boil_run5 = [ $run5, boil_run6 ] {monster_footstep(TRUE);ai_run(4);};
-void() boil_run6 = [ $run6, boil_run7 ] {ai_run(16);};
-void() boil_run7 = [ $run7, boil_run8 ] {ai_run(8);};
-void() boil_run8 = [ $run8, boil_run1 ] {ai_run(4);};
+void() boil_run1 = [ $run1, boil_run2 ] {monster_footstep(TRUE);ai_run(4 + ZRunSpeedIncrease(4*0.25));};
+void() boil_run2 = [ $run2, boil_run3 ] {monster_idle_sound(); ai_run(16 + ZRunSpeedIncrease(16*0.25));};
+void() boil_run3 = [ $run3, boil_run4 ] {ai_run(8 + ZRunSpeedIncrease(8*0.25));};
+void() boil_run4 = [ $run4, boil_run5 ] {ai_run(4 + ZRunSpeedIncrease(4*0.25));};
+void() boil_run5 = [ $run5, boil_run6 ] {monster_footstep(TRUE);ai_run(4 + ZRunSpeedIncrease(4*0.25));};
+void() boil_run6 = [ $run6, boil_run7 ] {ai_run(16 + ZRunSpeedIncrease(16*0.25));};
+void() boil_run7 = [ $run7, boil_run8 ] {ai_run(8 + ZRunSpeedIncrease(8*0.25));};
+void() boil_run8 = [ $run8, boil_run1 ] {ai_run(4 + ZRunSpeedIncrease(4*0.25));};
 
 //======================================================================
 // Running Boil Explosive Attack

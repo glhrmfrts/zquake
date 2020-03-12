@@ -92,32 +92,27 @@ void() zumbi_walk18	=[	$walk18,	zumbi_walk19	] {ai_walk(0);};
 void() zumbi_walk19	=[	$walk19,	zumbi_walk1	] {zumbi_sound(2);};
 
 //============================================================================
-float(float v) WaveZombieRun =
-{
-	// return speed increase for zombie based on current wave
-	return v * (g_current_wave / 15.0);
-};
 
 void() zumbi_run1		=[	$run1,		zumbi_run2	] {
 	self.inpain = 0; self.solid = SOLID_SLIDEBOX; ai_run(1);
 };
-void() zumbi_run2		=[	$run2,		zumbi_run3	] {ai_run(1 + WaveZombieRun(1));};
+void() zumbi_run2		=[	$run2,		zumbi_run3	] {ai_run(1 + ZRunSpeedIncrease(1));};
 void() zumbi_run3		=[	$run3,		zumbi_run4	] {ai_run(0);};
-void() zumbi_run4		=[	$run4,		zumbi_run5	] {ai_run(1 + WaveZombieRun(1));};
-void() zumbi_run5		=[	$run5,		zumbi_run6	] {ai_run(2 + WaveZombieRun(2));};
-void() zumbi_run6		=[	$run6,		zumbi_run7	] {ai_run(3 + WaveZombieRun(3));};
-void() zumbi_run7		=[	$run7,		zumbi_run8	] {ai_run(4 + WaveZombieRun(4));};
-void() zumbi_run8		=[	$run8,		zumbi_run9	] {ai_run(4 + WaveZombieRun(4));};
-void() zumbi_run9		=[	$run9,		zumbi_run10] {monster_footstep(FALSE); ai_run(2 + WaveZombieRun(2));};
+void() zumbi_run4		=[	$run4,		zumbi_run5	] {ai_run(1 + ZRunSpeedIncrease(1));};
+void() zumbi_run5		=[	$run5,		zumbi_run6	] {ai_run(2 + ZRunSpeedIncrease(2));};
+void() zumbi_run6		=[	$run6,		zumbi_run7	] {ai_run(3 + ZRunSpeedIncrease(3));};
+void() zumbi_run7		=[	$run7,		zumbi_run8	] {ai_run(4 + ZRunSpeedIncrease(4));};
+void() zumbi_run8		=[	$run8,		zumbi_run9	] {ai_run(4 + ZRunSpeedIncrease(4));};
+void() zumbi_run9		=[	$run9,		zumbi_run10] {monster_footstep(FALSE); ai_run(2 + ZRunSpeedIncrease(2));};
 void() zumbi_run10		=[	$run10,		zumbi_run11] {ai_run(0);};
 void() zumbi_run11		=[	$run11,		zumbi_run12] {ai_run(0);};
 void() zumbi_run12		=[	$run12,		zumbi_run13] {ai_run(0);};
-void() zumbi_run13		=[	$run13,		zumbi_run14] {ai_run(2 + WaveZombieRun(2));};
-void() zumbi_run14		=[	$run14,		zumbi_run15] {ai_run(4 + WaveZombieRun(4));};
-void() zumbi_run15		=[	$run15,		zumbi_run16] {ai_run(6 + WaveZombieRun(6));};
-void() zumbi_run16		=[	$run16,		zumbi_run17] {ai_run(7 + WaveZombieRun(7));};
-void() zumbi_run17		=[	$run17,		zumbi_run18] {monster_footstep(FALSE); ai_run(3 + WaveZombieRun(3));};
-void() zumbi_run18		=[	$run18,		zumbi_run1	] {zumbi_sound(3);	ai_run(8 + WaveZombieRun(8)); };
+void() zumbi_run13		=[	$run13,		zumbi_run14] {ai_run(2 + ZRunSpeedIncrease(2));};
+void() zumbi_run14		=[	$run14,		zumbi_run15] {ai_run(4 + ZRunSpeedIncrease(4));};
+void() zumbi_run15		=[	$run15,		zumbi_run16] {ai_run(6 + ZRunSpeedIncrease(6));};
+void() zumbi_run16		=[	$run16,		zumbi_run17] {ai_run(7 + ZRunSpeedIncrease(7));};
+void() zumbi_run17		=[	$run17,		zumbi_run18] {monster_footstep(FALSE); ai_run(3 + ZRunSpeedIncrease(3));};
+void() zumbi_run18		=[	$run18,		zumbi_run1	] {zumbi_sound(3);	ai_run(8 + ZRunSpeedIncrease(8)); };
 
 void() ZumbiCheckAttack =
 {

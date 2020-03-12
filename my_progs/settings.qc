@@ -135,6 +135,8 @@ void() ImpulseCommands =
 	if (self.impulse >= 1 && self.impulse <= 8) W_ChangeWeapon (self);
 	else if (self.impulse == 10) CycleWeaponCommand();
 	else if (self.impulse == 12) CycleWeaponReverseCommand();
+	
+	else if (self.impulse == 66) EndWaveCheat();
 
 	// Only these MOD options can be changed via the console
 	else if (self.impulse == 100) toggleautoaim();		// Toggle auto aim
