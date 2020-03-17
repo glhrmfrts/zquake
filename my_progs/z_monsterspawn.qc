@@ -6,8 +6,8 @@ void() ms_think;
 
 void() ms_set_next_think =
 {
-    local float min = g_monster_mintime;
-    local float max = g_monster_maxtime;
+    local float min = g_monster_mintime + self.delay;
+    local float max = g_monster_maxtime + self.delay;
     local float next_time = min + (random() * (max - min));
     self.nextthink = time + next_time;
 
@@ -182,7 +182,7 @@ float() ShouldSpawnDogOrSpiderAnyway =
     local float prog = g_monsters_killed / g_monsters_to_spawn;
     if (prog < 0.3 && (random() > 0.75))
         return TRUE;
-        
+
     return FALSE;
 };
 
@@ -192,7 +192,7 @@ float() ShouldSpawnBoilAnyway =
     local float prog = g_monsters_killed / g_monsters_to_spawn;
     if (prog > 0.2 && prog < 0.8 && (random() > 0.75))
         return TRUE;
-        
+
     return FALSE;
 };
 
@@ -202,7 +202,7 @@ float() ShouldSpawnKnightAnyway =
     local float prog = g_monsters_killed / g_monsters_to_spawn;
     if (prog > 0.2 && prog < 0.8 && (random() > 0.75))
         return TRUE;
-        
+
     return FALSE;
 };
 
@@ -237,7 +237,7 @@ void() ms_think =
         g_boils_spawned >= g_boils_to_spawn &&
         g_knights_spawned >= g_knights_to_spawn &&
         g_demons_spawned >= g_demons_to_spawn)
-    { 
+    {
         self.nextthink = time + 0.1;
         return;
     }
@@ -343,7 +343,7 @@ void() info_monster_spawn =
 {
     self.solid = SOLID_NOT;
     self.movetype = MOVETYPE_NONE;
-	self.think = ms_think;
+    self.think = ms_think;
     self.use = ms_use;
     self.state = 1;
     if (self.targetname)
@@ -355,12 +355,5 @@ void() info_monster_spawn =
     if (!self.radius) self.radius = 50;
     if (!self.state) return;
 
-	if (self.delay != 0.0)
-    {
-		self.nextthink = time + self.delay;
-	}
-	else
-    {
-		ms_set_next_think();
-	}
+    ms_set_next_think();
 };

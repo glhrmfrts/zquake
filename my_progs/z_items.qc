@@ -7,10 +7,10 @@ Give credits to player
 */
 void(entity ent, float value) GiveCredits =
 {
-	ent.credit = ent.credit + value;
+    ent.credit = ent.credit + value;
     ent.creditdiff = value;
     ent.creditdifftime = time + 3.0;
-	bprint(ent.netname); bprint(" earned "); bprint(ftos(value)); bprint(" credits!\n");
+    bprint(ent.netname); bprint(" earned "); bprint(ftos(value)); bprint(" credits!\n");
 };
 
 /*
@@ -22,7 +22,7 @@ Take credits from player
 */
 void(entity ent, float value) TakeCredits =
 {
-	ent.credit = ent.credit - value;
+    ent.credit = ent.credit - value;
     ent.creditdiff = -value;
     ent.creditdifftime = time + 3.0;
 };
@@ -144,7 +144,7 @@ Returns whether or not a powerup is extremely needed by a player, with 50% chanc
 float() IsPowerupNeeded =
 {
     local float r = random();
-    if (r < 0.5) return FALSE;
+    if (r < 0.3) return FALSE;
 
     // Wait for the timer in case it's not the first time a needed powerup spawned
     if (g_powerup_needed_time > 0 && g_powerup_needed_time < time) return FALSE;
@@ -157,7 +157,7 @@ float() IsPowerupNeeded =
             r = random();
             if (r < 0.5)
                 g_powerup_needed = IT_SUPERHEALTH;
-            else
+            else if (!(p.items & IT_INVULNERABILITY))
                 g_powerup_needed = IT_INVULNERABILITY;
 
             g_powerup_needed_time = time + 120;
