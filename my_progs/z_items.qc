@@ -77,6 +77,9 @@ void(entity ent, float item) GiveWeapon =
     self = this;
 };
 
+float g_powerup_needed;
+float g_powerup_needed_time;
+
 /*
 ===============
 SpawnPowerup
@@ -94,6 +97,14 @@ void(vector org) SpawnPowerup =
 
     local float r = random();
     local void() spawn_func;
+
+    if (g_powerup_needed == IT_QUAD)
+        r = 0.71;
+    else if (g_powerup_needed == IT_INVULNERABILITY)
+        r = 0.41;
+    else if (g_powerup_needed == IT_SUPERHEALTH)
+        r = 0.2;
+
     if (r > 0.70)
     {
         pup.classname = "item_artifact_super_damage";
@@ -119,6 +130,42 @@ void(vector org) SpawnPowerup =
 
     pup.think = SUB_Remove;
     pup.nextthink = time + POWERUP_REMOVE_TIME;
+
+    g_powerup_needed = 0;
+};
+
+/*
+===============
+IsPowerupNeeded
+
+Returns whether or not a powerup is extremely needed by a player, with 50% chance.
+===============
+*/
+float() IsPowerupNeeded =
+{
+    local float r = random();
+    if (r < 0.5) return FALSE;
+
+    // Wait for the timer in case it's not the first time a needed powerup spawned
+    if (g_powerup_needed_time > 0 && g_powerup_needed_time < time) return FALSE;
+
+    local entity p = world;
+    while ((p = find(p, classname, "player")))
+    {
+        if (p.health < 10)
+        {
+            r = random();
+            if (r < 0.5)
+                g_powerup_needed = IT_SUPERHEALTH;
+            else
+                g_powerup_needed = IT_INVULNERABILITY;
+
+            g_powerup_needed_time = time + 120;
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 };
 
 /*

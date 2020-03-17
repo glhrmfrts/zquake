@@ -288,8 +288,6 @@ void() info_wavemgr =
     self.think = wavemgr_start;
     self.nextthink = time + 1.0;
 
-    self.count = 24;
-
     if (!self.count) self.count = 1;
     if (!self.zombie_health) self.zombie_health = BASE_ZOMBIE_HEALTH;
     if (!self.monster_mintime) self.monster_mintime = BASE_ZOMBIE_MINTIME;

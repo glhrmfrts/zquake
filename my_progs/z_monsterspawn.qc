@@ -39,10 +39,14 @@ vector(float rad) MonsterSpawnOffset =
     return [offsx, offsy, 0];
 };
 
-void(entity mon) SetupSpawnedMonster =
+void(entity mon, float pupchance, float defcredit, float sgcredit, float axecredit) SetupSpawnedMonster =
 {
     mon.spawnflags = MON_SPAWN_ANGRY;
     mon.zmonster = TRUE;
+    mon.wavenum = pupchance;
+    mon.credit = defcredit;
+    mon.creditdiff = sgcredit;
+    mon.creditdifftime = axecredit;
 };
 
 void(vector org) SpawnZombie =
@@ -52,7 +56,7 @@ void(vector org) SpawnZombie =
     // Spawn new empty entity to become zombie
     local entity zomb = spawn();
     zomb.origin = org;
-    SetupSpawnedMonster(zomb);
+    SetupSpawnedMonster(zomb, 0.03, 2, 3, 5);
 
     // Call monster_zombie to setup zombie entity
     local entity this = self;
@@ -84,7 +88,7 @@ void(vector org) SpawnDog =
     dog.classname = "monster_dog";
     dog.origin = org;
     dog.zmonstertype = ZMONSTER_DOG;
-    SetupSpawnedMonster(dog);
+    SetupSpawnedMonster(dog, 0.01, 1, 2, 3);
 
     local entity this = self;
     self = dog;
@@ -102,7 +106,7 @@ void(vector org) SpawnSpider =
     spider.classname = "monster_spider";
     spider.origin = org;
     spider.zmonstertype = ZMONSTER_SPIDER;
-    SetupSpawnedMonster(spider);
+    SetupSpawnedMonster(spider, 0.01, 1, 2, 3);
 
     local entity this = self;
     self = spider;
@@ -123,7 +127,7 @@ void(vector org) SpawnBoil =
     if (random() < 0.2)
         mon.poisonous = TRUE;
 
-    SetupSpawnedMonster(mon);
+    SetupSpawnedMonster(mon, 0.03, 2, 3, 5);
 
     local entity this = self;
     self = mon;
@@ -141,7 +145,7 @@ void(vector org) SpawnKnight =
     kni.classname = "monster_knight";
     kni.origin = org;
     kni.zmonstertype = ZMONSTER_KNIGHT;
-    SetupSpawnedMonster(kni);
+    SetupSpawnedMonster(kni, 0.03, 2, 3, 5);
 
     local entity this = self;
     self = kni;
@@ -160,7 +164,7 @@ void(vector org) SpawnDemon =
     de.classname = "monster_demon1";
     de.origin = org;
     de.zmonstertype = ZMONSTER_DEMON;
-    SetupSpawnedMonster(de);
+    SetupSpawnedMonster(de, 0.07, 10, 15, 20);
 
     local entity this = self;
     self = de;
