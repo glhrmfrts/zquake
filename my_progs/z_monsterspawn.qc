@@ -231,67 +231,68 @@ void() ms_think =
     if (g_wave_type == WAVE_BOSS && time < g_boss_delay_time) { self.nextthink = time + 0.1; return; }
 
     // If all the monsters that should spawn are already spawned, skip
-    if (g_zombies_spawned >= g_zombies_to_spawn &&
-        g_dogs_spawned >= g_dogs_to_spawn &&
-        g_spiders_spawned >= g_spiders_to_spawn &&
-        g_boils_spawned >= g_boils_to_spawn &&
-        g_knights_spawned >= g_knights_to_spawn &&
-        g_demons_spawned >= g_demons_to_spawn)
-    {
-        self.nextthink = time + 0.1;
-        return;
-    }
+    if (g_monster_spawned >= g_monster_to_spawn) { self.nextthink = time + 0.1; return; }
 
     local float spawned = FALSE;
     local float tries = 0;
     while (!spawned)
     {
-        local float demon_enabled = !(self.spawnflags & MONSTERSPAWN_NODEMON);
-        local float dog_enabled = !(self.spawnflags & MONSTERSPAWN_NODOG);
-        local float kni_enabled = !(self.spawnflags & MONSTERSPAWN_NOKNIGHT);
         local float zomb_enabled = !(self.spawnflags & MONSTERSPAWN_NOZOMBIE);
-        local float spi_enabled = !(self.spawnflags & MONSTERSPAWN_NOSPIDER);
-        local float boil_enabled = !(self.spawnflags & MONSTERSPAWN_NOBOIL);
+        local float weak1_enabled = !(self.spawnflags & MONSTERSPAWN_NOWEAK1);
+        local float weak2_enabled = !(self.spawnflags & MONSTERSPAWN_NOWEAK2);
+        local float mid1_enabled = !(self.spawnflags & MONSTERSPAWN_NOMID1);
+        local float mid2_enabled = !(self.spawnflags & MONSTERSPAWN_NOMID2);
+        local float boss1_enabled = !(self.spawnflags & MONSTERSPAWN_NOBOSS1);
+        local float boss2_enabled = !(self.spawnflags & MONSTERSPAWN_NOBOSS2);
+        
         local vector neworigin = self.origin + MonsterSpawnOffset(self.radius);
         if (entity_pcontent(neworigin)) continue; // try again
 
         local float rchance = random();
-        if (demon_enabled && (rchance > 0.97 || ShouldSpawnDemonAnyway()))
+        if (boss1_enabled && (rchance > 0.97 || ShouldSpawnDemonAnyway()))
         {
             // Spawn demon by 3% chance or if 90% of other enemies were killed
             if (g_demons_spawned < g_demons_to_spawn)
             {
-                SpawnDemon(neworigin);
+                SpawnBoss1(neworigin);
                 spawned = TRUE;
             }
         }
-        else if ((dog_enabled || spi_enabled) && (rchance > 0.9 || ShouldSpawnDogOrSpiderAnyway()))
+        else if ((weak1_enabled || weak2_enabled) && (rchance > 0.9 || ShouldSpawnWeakAnyway()))
         {
             local float r = random();
-            if (dog_enabled && r > 0.5 && g_dogs_spawned < g_dogs_to_spawn)
+            if (weak1_enabled && r > 0.5 && g_weak1_spawned < g_weak1_to_spawn)
             {
-                SpawnDog(neworigin);
+                SpawnWeak1(neworigin);
                 spawned = TRUE;
             }
-            else if (spi_enabled && g_spiders_spawned < (g_spiders_to_spawn + CalcExtraSpiders(self)))
+            else if (weak2_enabled && g_weak2_spawned < (g_weak2_to_spawn + CalcExtraSpiders(self)))
             {
-                SpawnSpider(neworigin);
-                spawned = TRUE;
-            }
-        }
-        else if (kni_enabled && (rchance > 0.83 || ShouldSpawnKnightAnyway()))
-        {
-            if (g_knights_spawned < g_knights_to_spawn)
-            {
-                SpawnKnight(neworigin);
+                SpawnWeak2(neworigin);
                 spawned = TRUE;
             }
         }
-        else if (boil_enabled && (rchance > 0.75 || ShouldSpawnBoilAnyway()))
+        else if (mid1_enabled && (rchance > 0.83 || ShouldSpawnMidAnyway()))
         {
-            if (g_boils_spawned < g_boils_to_spawn)
+            if (g_mid1_spawned < g_mid1_to_spawn)
             {
-                SpawnBoil(neworigin);
+                SpawnMid1(neworigin);
+                spawned = TRUE;
+            }
+        }
+        else if (mid2_enabled && (rchance > 0.75 || ShouldSpawnMidAnyway()))
+        {
+            if (g_mid2_spawned < g_mid2_to_spawn)
+            {
+                SpawnMid2(neworigin);
+                spawned = TRUE;
+            }
+        }
+        else if (boss2_enabled && (rchance > 0.70))
+        {
+            if (g_boss2_spawned < g_boss2_to_spawn)
+            {
+                SpawnBoss2(neworigin);
                 spawned = TRUE;
             }
         }

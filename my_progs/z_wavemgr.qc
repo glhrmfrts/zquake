@@ -84,6 +84,16 @@ void() SetupWave =
             g_demons_to_spawn = self.demon_mincount;
         }
     }
+
+    // Tarbaby generation
+    g_tars_to_spawn = 0;
+    if (g_current_wave >= TARBABY_START_WAVE)
+    {
+        if (random() > 0.5)
+        {
+            g_tars_to_spawn = floor(RandomBetween(self.tar_mincount + (0.25*(g_current_wave - TARBABY_START_WAVE)), self.tar_maxcount + (0.5*(g_current_wave - TARBABY_START_WAVE))));
+        }
+    }
 };
 
 void() SetupBossWave =
@@ -94,10 +104,16 @@ void() SetupBossWave =
     g_knights_to_spawn = 0;
     g_boils_to_spawn = 0;
     g_demons_to_spawn = 0;
+    g_tars_to_spawn = 0;
 
     if (g_current_wave == DEMON_START_WAVE)
     {
         g_demons_to_spawn = self.demon_maxcount * 2;
+        g_boss_delay_time = time + 10.0;
+    }
+    else if (g_current_wave == TARBABY_START_WAVE)
+    {
+        g_tars_to_spawn = self.tar_maxcount * 2;
         g_boss_delay_time = time + 10.0;
     }
 };
@@ -110,6 +126,7 @@ void() SetupZombieWave =
     g_knights_to_spawn = 0;
     g_boils_to_spawn = 0;
     g_demons_to_spawn = 0;
+    g_tars_to_spawn = 0;
 
     g_zombies_to_spawn = floor(RandomBetween(self.zombie_mincount + (1*g_current_wave), self.zombie_maxcount + (2*g_current_wave)));
     g_zombies_to_spawn *= floor(RandomBetween(0.25 * (g_current_wave * 0.5), 0.4 * (g_current_wave * 0.5)));
@@ -124,7 +141,7 @@ void() WaveChanged =
 
     // Decide which type of wave we are gonna have
     g_wave_type = WAVE_DEFAULT;
-    if (g_current_wave == 10) {
+    if (g_current_wave == 10 || g_current_wave == 15) {
         g_wave_type = WAVE_BOSS;
     }
     else if (g_current_wave > 10 && lastwave != WAVE_ZOMBIE && (random() < 0.95)) {
@@ -151,6 +168,7 @@ void() WaveChanged =
     g_boils_spawned = 0;
     g_demons_spawned = 0;
     g_spiders_spawned = 0;
+    g_tars_spawned = 0;
     g_monsters_spawned = 0;
 
     g_zombies_killed = 0;
@@ -159,10 +177,11 @@ void() WaveChanged =
     g_boils_killed = 0;
     g_demons_killed = 0;
     g_spiders_killed = 0;
+    g_tars_killed = 0;
     g_monsters_killed = 0;
 
     g_monsters_to_spawn = (
-        g_zombies_to_spawn + g_dogs_to_spawn + g_demons_to_spawn + g_knights_to_spawn + g_spiders_to_spawn + g_boils_to_spawn
+        g_zombies_to_spawn + g_dogs_to_spawn + g_demons_to_spawn + g_knights_to_spawn + g_spiders_to_spawn + g_boils_to_spawn + g_tars_to_spawn
     );
 
     g_force_wave_end = 0;
