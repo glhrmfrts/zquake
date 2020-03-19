@@ -1,1 +1,0 @@
-guilherme@guilherme-Lenovo-ideapad-320-15IKB.3771:1584468383

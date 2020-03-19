@@ -1013,6 +1013,8 @@ void() set_suicide_frame;		// In player.qc
 void() ClientRespawn =
 {
 	if (coop) {
+		if (!ZCanClientRespawn()) return;
+		
 		CopyToBodyQue (self);	// make a copy of the dead body for appearances sake
 		setspawnparms (self);	// get the spawn parms as they were at level start
 		PutClientInServer ();	// respawn

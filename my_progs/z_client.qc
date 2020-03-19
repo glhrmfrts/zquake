@@ -23,6 +23,13 @@ void() ZClientConnect =
     }
 };
 
+float() ZCanClientRespawn =
+{
+    if (g_wave_active) return FALSE;
+
+    return TRUE;
+};
+
 void() ZPlayerPreThink =
 {
     self.wavenum = g_current_wave;

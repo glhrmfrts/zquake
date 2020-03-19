@@ -64,13 +64,13 @@ void(vector org) SpawnZombie =
     if (r <= 0.2 && g_current_wave >= ZOMBIEK_START_WAVE && g_wave_type != WAVE_ZOMBIE)
     {
         zomb.classname = "monster_zumbik";
-        zomb.zmonstertype = ZMONSTER_ZUMBIK;
+        zomb.zmonstertype = ZMONSTER_ZOMBIE;
         monster_zumbik();
     }
     else
     {
         zomb.classname = "monster_zumbi";
-        zomb.zmonstertype = ZMONSTER_ZUMBI;
+        zomb.zmonstertype = ZMONSTER_ZOMBIE;
         monster_zumbi();
     }
     self = this;
@@ -81,13 +81,13 @@ void(vector org) SpawnZombie =
     bprint("Spawned Zombie!\n");
 };
 
-void(vector org) SpawnDog =
+void(vector org) SpawnWeak1 =
 {
     // Spawn new empty entity to become dog
     local entity dog = spawn();
     dog.classname = "monster_dog";
     dog.origin = org;
-    dog.zmonstertype = ZMONSTER_DOG;
+    dog.zmonstertype = ZMONSTER_WEAK1;
     SetupSpawnedMonster(dog, 0.01, 1, 2, 3);
 
     local entity this = self;
@@ -95,17 +95,17 @@ void(vector org) SpawnDog =
     monster_dog();
     self = this;
 
-    g_dogs_spawned = g_dogs_spawned + 1;
+    g_weak1_spawned = g_weak1_spawned + 1;
     self.enemy = dog;
     bprint("Spawned Dog!\n");
 };
 
-void(vector org) SpawnSpider =
+void(vector org) SpawnWeak2 =
 {
     local entity spider = spawn();
     spider.classname = "monster_spider";
     spider.origin = org;
-    spider.zmonstertype = ZMONSTER_SPIDER;
+    spider.zmonstertype = ZMONSTER_WEAK2;
     SetupSpawnedMonster(spider, 0.01, 1, 2, 3);
 
     local entity this = self;
@@ -113,17 +113,35 @@ void(vector org) SpawnSpider =
     monster_spider();
     self = this;
 
-    g_spiders_spawned = g_spiders_spawned + 1;
+    g_weak2_spawned = g_weak2_spawned + 1;
     self.enemy = spider;
     bprint("Spawned Spider!\n");
 };
 
-void(vector org) SpawnBoil =
+void(vector org) SpawnMid1 =
+{
+    local entity kni = spawn();
+    kni.classname = "monster_knight";
+    kni.origin = org;
+    kni.zmonstertype = ZMONSTER_MID1;
+    SetupSpawnedMonster(kni, 0.03, 2, 3, 5);
+
+    local entity this = self;
+    self = kni;
+    monster_knight();
+    self = this;
+
+    g_mid1_spawned = g_mid1_spawned + 1;
+    self.enemy = kni;
+    bprint("Spawned Knight!\n");
+};
+
+void(vector org) SpawnMid2 =
 {
     local entity mon = spawn();
     mon.classname = "monster_boil";
     mon.origin = org;
-    mon.zmonstertype = ZMONSTER_BOIL;
+    mon.zmonstertype = ZMONSTER_MID2;
     if (random() < 0.2)
         mon.poisonous = TRUE;
 
@@ -134,36 +152,18 @@ void(vector org) SpawnBoil =
     monster_boil();
     self = this;
 
-    g_boils_spawned = g_boils_spawned + 1;
+    g_mid2_spawned = g_mid2_spawned + 1;
     self.enemy = mon;
     bprint("Spawned Boil!\n");
 };
 
-void(vector org) SpawnKnight =
-{
-    local entity kni = spawn();
-    kni.classname = "monster_knight";
-    kni.origin = org;
-    kni.zmonstertype = ZMONSTER_KNIGHT;
-    SetupSpawnedMonster(kni, 0.03, 2, 3, 5);
-
-    local entity this = self;
-    self = kni;
-    monster_knight();
-    self = this;
-
-    g_knights_spawned = g_knights_spawned + 1;
-    self.enemy = kni;
-    bprint("Spawned Knight!\n");
-};
-
-void(vector org) SpawnDemon =
+void(vector org) SpawnBoss1 =
 {
     // Spawn new empty entity to become demon
     local entity de = spawn();
     de.classname = "monster_demon1";
     de.origin = org;
-    de.zmonstertype = ZMONSTER_DEMON;
+    de.zmonstertype = ZMONSTER_BOSS1;
     SetupSpawnedMonster(de, 0.07, 10, 15, 20);
 
     local entity this = self;
@@ -171,12 +171,31 @@ void(vector org) SpawnDemon =
     monster_demon1();
     self = this;
 
-    g_demons_spawned = g_demons_spawned + 1;
+    g_boss1_spawned = g_boss1_spawned + 1;
     self.enemy = de;
     bprint("Spawned Demon!\n");
 };
 
-float() ShouldSpawnDogOrSpiderAnyway =
+void(vector org) SpawnBoss2 =
+{
+    // Spawn new empty entity to become demon
+    local entity de = spawn();
+    de.classname = "monster_tarbaby";
+    de.origin = org;
+    de.zmonstertype = ZMONSTER_BOSS2;
+    SetupSpawnedMonster(de, 0.05, 7, 12, 15);
+
+    local entity this = self;
+    self = de;
+    monster_tarbaby();
+    self = this;
+
+    g_boss2_spawned = g_boss2_spawned + 1;
+    self.enemy = de;
+    bprint("Spawned Tarbaby!\n");
+};
+
+float() ShouldSpawnWeakAnyway =
 {
     // More chance to spawn dog if we're at the beginning of the wave
     local float prog = g_monsters_killed / g_monsters_to_spawn;
@@ -186,7 +205,7 @@ float() ShouldSpawnDogOrSpiderAnyway =
     return FALSE;
 };
 
-float() ShouldSpawnBoilAnyway =
+float() ShouldSpawnMidAnyway =
 {
     // More chance to spawn boil if we're at the middle of the wave
     local float prog = g_monsters_killed / g_monsters_to_spawn;
@@ -196,17 +215,7 @@ float() ShouldSpawnBoilAnyway =
     return FALSE;
 };
 
-float() ShouldSpawnKnightAnyway =
-{
-    // More chance to spawn knight if we're at the middle of the wave
-    local float prog = g_monsters_killed / g_monsters_to_spawn;
-    if (prog > 0.2 && prog < 0.8 && (random() > 0.75))
-        return TRUE;
-
-    return FALSE;
-};
-
-float() ShouldSpawnDemonAnyway =
+float() ShouldSpawnBossAnyway =
 {
     // Most certainly spawn demon if we're at the end of the wave
     local float prog = g_monsters_killed / g_monsters_to_spawn;
@@ -216,12 +225,40 @@ float() ShouldSpawnDemonAnyway =
     return FALSE;
 };
 
-float(entity ms) CalcExtraSpiders =
+float(entity ms) CalcExtraWeak2 =
 {
     if (g_wave_type == WAVE_BOSS) return 0;
 
     // Use the spider_mincount field as extra for a specific monster spawn
-    return floor(ms.spider_mincount * g_current_wave);
+    return floor(ms.weak2_mincount * g_current_wave);
+};
+
+float g_prior_killed;
+float g_prior_to_spawn;
+
+float() GetNextMonsterSpawnChance =
+{
+    if (g_use_prior)
+    {
+        local float prior = g_prior1;
+        if (g_cur_prior == 1)
+            prior = g_prior2;
+
+        // Return chance based on priority
+        if (prior == ZMONSTER_BOSS1)
+        {
+            g_prior_killed = g_boss1_killed;
+            g_prior_to_spawn = g_boss1_to_spawn;
+            return 1.0;
+        }
+        else if (prior == ZMONSTER_BOSS2)
+        {
+            g_prior_killed = g_boss2_killed;
+            g_prior_to_spawn = g_boss2_to_spawn;
+            return 0.71;
+        }
+    }
+    return random();
 };
 
 void() ms_think =
@@ -231,7 +268,7 @@ void() ms_think =
     if (g_wave_type == WAVE_BOSS && time < g_boss_delay_time) { self.nextthink = time + 0.1; return; }
 
     // If all the monsters that should spawn are already spawned, skip
-    if (g_monster_spawned >= g_monster_to_spawn) { self.nextthink = time + 0.1; return; }
+    if (g_monsters_spawned >= g_monsters_to_spawn) { self.nextthink = time + 0.1; return; }
 
     local float spawned = FALSE;
     local float tries = 0;
@@ -248,11 +285,11 @@ void() ms_think =
         local vector neworigin = self.origin + MonsterSpawnOffset(self.radius);
         if (entity_pcontent(neworigin)) continue; // try again
 
-        local float rchance = random();
-        if (boss1_enabled && (rchance > 0.97 || ShouldSpawnDemonAnyway()))
+        local float rchance = GetNextMonsterSpawnChance();
+        if (boss1_enabled && (rchance > 0.97 || ShouldSpawnBossAnyway()))
         {
             // Spawn demon by 3% chance or if 90% of other enemies were killed
-            if (g_demons_spawned < g_demons_to_spawn)
+            if (g_boss1_spawned < g_boss1_to_spawn)
             {
                 SpawnBoss1(neworigin);
                 spawned = TRUE;
@@ -266,7 +303,7 @@ void() ms_think =
                 SpawnWeak1(neworigin);
                 spawned = TRUE;
             }
-            else if (weak2_enabled && g_weak2_spawned < (g_weak2_to_spawn + CalcExtraSpiders(self)))
+            else if (weak2_enabled && g_weak2_spawned < (g_weak2_to_spawn + CalcExtraWeak2(self)))
             {
                 SpawnWeak2(neworigin);
                 spawned = TRUE;
@@ -315,6 +352,12 @@ void() ms_think =
         g_monsters_spawned = g_monsters_spawned + 1;
         // TODO: bug?
         // monster_update_total(0.5);
+    }
+
+    // Check and advance priority variables
+    if (g_prior_killed >= (g_prior_to_spawn - RandomBetween(1.0, 2.0)))
+    {
+        g_cur_prior = g_cur_prior + 1;
     }
 
     self.think = ms_use_last_enemy;

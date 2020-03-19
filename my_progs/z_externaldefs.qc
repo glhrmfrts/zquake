@@ -8,6 +8,8 @@
 
 void() ZClientConnect;
 
+float() ZCanClientRespawn;
+
 void() ZPlayerPreThink;
 
 void() ZMonsterDie;

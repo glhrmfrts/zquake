@@ -3566,10 +3566,12 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 [
 	spawnflags(flags) = [ 
 		1 : "No zombie" : 0
-		2 : "No dog" : 0
-		4 : "No knight" : 0
-		8 : "No demon" : 0
-		16 : "No spiders" : 0
+		2 : "No weak 1" : 0
+		4 : "No weak 2" : 0
+		8 : "No mid 1" : 0
+		16 : "No mid 2" : 0
+		32 : "No boss 1" : 0
+		64 : "No boss 2" : 0
 	]
 	delay(integer) : "Starting time delay" : 0
 	radius(float) : "Radius that is able to spawn zombies" : 50

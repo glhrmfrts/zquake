@@ -5,7 +5,7 @@ void(float weapon) SetMonsterStats =
 {
 	g_monster_killed_time = time;
 	g_monsters_killed = g_monsters_killed + 1;
-	g_monster_pup_chance = self.wavenum;
+	g_monster_pup_chance = self.wavenum + (0.001 * g_current_wave);
 	g_monster_credits = self.credit;
 	if (weapon == IT_AXE)
 		g_monster_credits = self.creditdifftime;
@@ -13,33 +13,37 @@ void(float weapon) SetMonsterStats =
 		g_monster_credits = self.creditdiff;
 
 	// Update counters
-	if (self.zmonstertype == ZMONSTER_ZUMBI)
+	if (self.zmonstertype == ZMONSTER_ZOMBIE)
 	{
 		g_zombies_killed = g_zombies_killed + 1;
 	}
-	else if (self.zmonstertype == ZMONSTER_ZUMBIK)
+	else if (self.zmonstertype == ZMONSTER_ZOMBIE)
 	{
 		g_zombies_killed = g_zombies_killed + 1;
 	}
-	else if (self.zmonstertype == ZMONSTER_DOG)
+	else if (self.zmonstertype == ZMONSTER_WEAK1)
 	{
-		g_dogs_killed = g_dogs_killed + 1;
+		g_weak1_killed = g_weak1_killed + 1;
 	}
-	else if (self.zmonstertype == ZMONSTER_SPIDER)
+	else if (self.zmonstertype == ZMONSTER_WEAK2)
 	{
-		g_spiders_killed = g_spiders_killed + 1;
+		g_weak2_killed = g_weak2_killed + 1;
 	}
-	else if (self.zmonstertype == ZMONSTER_BOIL)
+	else if (self.zmonstertype == ZMONSTER_MID2)
 	{
-		g_boils_killed = g_boils_killed + 1;
+		g_mid2_killed = g_mid2_killed + 1;
 	}
-	else if (self.zmonstertype == ZMONSTER_KNIGHT)
+	else if (self.zmonstertype == ZMONSTER_MID1)
 	{
-		g_knights_killed = g_knights_killed + 1;
+		g_mid1_killed = g_mid1_killed + 1;
 	}
-	else if (self.zmonstertype == ZMONSTER_DEMON)
+	else if (self.zmonstertype == ZMONSTER_BOSS1)
 	{
-		g_demons_killed = g_demons_killed + 1;
+		g_boss1_killed = g_boss1_killed + 1;
+	}
+	else if (self.zmonstertype == ZMONSTER_BOSS2)
+	{
+		g_boss2_killed = g_boss2_killed + 1;
 	}
 };
 

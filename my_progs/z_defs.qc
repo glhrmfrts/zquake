@@ -7,7 +7,7 @@ const float STAT_CREDITDIFF = 35;
 const float STAT_WAVEACTIVE = 36;
 
 // monster types, defined to be faster than looking up classname and mod-agnostic
-const float ZMONSTER_ZOMBIE = 0; // Custom zombie
+const float ZMONSTER_ZOMBIE = 1; // Custom zombie
 const float ZMONSTER_WEAK1 = 2; // id dog
 const float ZMONSTER_WEAK2 = 3; // A.D. Spider
 const float ZMONSTER_MID1 = 4; // id knight
@@ -31,6 +31,8 @@ const float BASE_MID1_MINCOUNT = 1;
 const float BASE_MID1_MAXCOUNT = 3;
 const float BASE_BOSS1_MINCOUNT = 1;
 const float BASE_BOSS1_MAXCOUNT = 2;
+const float BASE_BOSS2_MINCOUNT = 3;
+const float BASE_BOSS2_MAXCOUNT = 5;
 
 const float WEAK1_START_WAVE = 3;
 const float WEAK2_START_WAVE = 4;
@@ -116,6 +118,15 @@ float g_monsters_spawned;
 float g_monsters_killed;
 float g_monster_killed_time;
 float g_force_wave_end;
+
+// players variables
+float g_num_players;
+
+// monster type priority
+float g_prior1;
+float g_prior2;
+float g_cur_prior;
+float g_use_prior;
 
 .float monster_mintime;
 .float monster_maxtime;

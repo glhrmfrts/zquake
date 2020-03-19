@@ -152,7 +152,7 @@ float() IsPowerupNeeded =
     local entity p = world;
     while ((p = find(p, classname, "player")))
     {
-        if (p.health < 10)
+        if (p.health > 0 && p.health < 10)
         {
             r = random();
             if (r < 0.5)

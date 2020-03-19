@@ -209,6 +209,8 @@ void() tbaby_die2 =[ $exp, tbaby_run1 ] {
 //----------------------------------------------------------------------
 void() tbaby_die =
 {
+	ZMonsterDie();
+	
 	// Pre-check routine to tidy up extra entities
 	monster_death_precheck();
 

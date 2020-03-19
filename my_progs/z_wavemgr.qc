@@ -16,117 +16,127 @@ void() SetupWave =
     g_zombies_to_spawn = floor(RandomBetween(self.zombie_mincount + (1*g_current_wave), self.zombie_maxcount + (2*g_current_wave)));
 
     // Dogs generation
-    g_dogs_to_spawn = 0;
-    if (g_current_wave >= DOG_START_WAVE)
+    g_weak1_to_spawn = 0;
+    if (g_current_wave >= WEAK1_START_WAVE)
     {
-        if (random() > 0.25 || g_current_wave == DOG_START_WAVE)
+        if (random() > 0.25 || g_current_wave == WEAK1_START_WAVE)
         {
-            g_dogs_to_spawn = floor(RandomBetween(self.dog_mincount + (0.5*(g_current_wave - DOG_START_WAVE)), self.dog_maxcount + (1*(g_current_wave - DOG_START_WAVE))));
+            g_weak1_to_spawn = floor(RandomBetween(self.weak1_mincount + (0.5*(g_current_wave - WEAK1_START_WAVE)), self.weak1_maxcount + (1*(g_current_wave - WEAK1_START_WAVE))));
         }
         else
         {
-            g_dogs_to_spawn = 0;
+            g_weak1_to_spawn = 0;
         }
     }
 
     // Spiders generation
-    g_spiders_to_spawn = 0;
-    if (g_current_wave >= SPIDER_START_WAVE)
+    g_weak2_to_spawn = 0;
+    if (g_current_wave >= WEAK2_START_WAVE)
     {
-        if (g_dogs_to_spawn <= SPIDER_START_WAVE)
+        if (g_weak1_to_spawn <= WEAK2_START_WAVE)
         {
-            g_spiders_to_spawn = floor(RandomBetween(self.spider_mincount + (0.5*(g_current_wave - SPIDER_START_WAVE)), self.spider_maxcount + (1*(g_current_wave - SPIDER_START_WAVE))));
+            g_weak2_to_spawn = floor(RandomBetween(self.weak2_mincount + (0.5*(g_current_wave - WEAK2_START_WAVE)), self.weak2_maxcount + (1*(g_current_wave - WEAK2_START_WAVE))));
         }
         else
         {
-            g_spiders_to_spawn = floor(self.spider_mincount*0.35);
-        }
-    }
-
-    // Boils generation
-    g_boils_to_spawn = 0;
-    if (g_current_wave >= BOIL_START_WAVE)
-    {
-        if (random() > 0.25 || g_current_wave == BOIL_START_WAVE)
-        {
-            g_boils_to_spawn = floor(RandomBetween(self.boil_mincount + (0.5*(g_current_wave - BOIL_START_WAVE)), self.boil_maxcount + (1*(g_current_wave - BOIL_START_WAVE))));
-        }
-        else
-        {
-            g_boils_to_spawn = 0;
+            g_weak2_to_spawn = floor(self.weak2_mincount*0.35);
         }
     }
 
     // Knights generation
-    g_knights_to_spawn = 0;
-    if (g_current_wave >= KNIGHT_START_WAVE)
+    g_mid1_to_spawn = 0;
+    if (g_current_wave >= MID1_START_WAVE)
     {
         if (random() > 0.05)
         {
-            g_knights_to_spawn = floor(RandomBetween(self.knight_mincount + (0.5*(g_current_wave - KNIGHT_START_WAVE)), self.knight_maxcount + (1*(g_current_wave - KNIGHT_START_WAVE))));
+            g_mid1_to_spawn = floor(RandomBetween(self.mid1_mincount + (0.5*(g_current_wave - MID1_START_WAVE)), self.mid1_maxcount + (1*(g_current_wave - MID1_START_WAVE))));
         }
         else
         {
-            g_knights_to_spawn = self.knight_mincount + (1*(g_current_wave - KNIGHT_START_WAVE));
+            g_mid1_to_spawn = self.mid1_mincount + (1*(g_current_wave - MID1_START_WAVE));
+        }
+    }
+
+    // Boils generation
+    g_mid2_to_spawn = 0;
+    if (g_current_wave >= MID2_START_WAVE)
+    {
+        if (random() > 0.25 || g_current_wave == MID2_START_WAVE)
+        {
+            g_mid2_to_spawn = floor(RandomBetween(self.mid2_mincount + (0.5*(g_current_wave - MID2_START_WAVE)), self.mid2_maxcount + (1*(g_current_wave - MID2_START_WAVE))));
+        }
+        else
+        {
+            g_mid2_to_spawn = 0;
         }
     }
 
     // Demons generation
-    g_demons_to_spawn = 0;
-    if (g_current_wave >= DEMON_START_WAVE)
+    g_boss1_to_spawn = 0;
+    if (g_current_wave >= BOSS1_START_WAVE)
     {
         if (random() > 0.2)
         {
-            g_demons_to_spawn = floor(RandomBetween(self.demon_mincount + (0.25*(g_current_wave - DEMON_START_WAVE)), self.demon_maxcount + (0.5*(g_current_wave - DEMON_START_WAVE))));
+            g_boss1_to_spawn = floor(RandomBetween(self.boss1_mincount + (0.25*(g_current_wave - BOSS1_START_WAVE)), self.boss1_maxcount + (0.5*(g_current_wave - BOSS1_START_WAVE))));
         }
         else
         {
-            g_demons_to_spawn = self.demon_mincount;
+            g_boss1_to_spawn = self.boss1_mincount;
         }
     }
 
     // Tarbaby generation
-    g_tars_to_spawn = 0;
-    if (g_current_wave >= TARBABY_START_WAVE)
+    g_boss2_to_spawn = 0;
+    if (g_current_wave >= BOSS2_START_WAVE)
     {
         if (random() > 0.5)
         {
-            g_tars_to_spawn = floor(RandomBetween(self.tar_mincount + (0.25*(g_current_wave - TARBABY_START_WAVE)), self.tar_maxcount + (0.5*(g_current_wave - TARBABY_START_WAVE))));
+            g_boss2_to_spawn = floor(RandomBetween(self.boss2_mincount + (0.25*(g_current_wave - BOSS2_START_WAVE)), self.boss2_maxcount + (0.5*(g_current_wave - BOSS2_START_WAVE))));
         }
     }
 };
 
 void() SetupBossWave =
 {
-    g_dogs_to_spawn = 0;
-    g_spiders_to_spawn = 0;
+    g_weak1_to_spawn = 0;
+    g_weak2_to_spawn = 0;
     g_zombies_to_spawn = 0;
-    g_knights_to_spawn = 0;
-    g_boils_to_spawn = 0;
-    g_demons_to_spawn = 0;
-    g_tars_to_spawn = 0;
+    g_mid1_to_spawn = 0;
+    g_mid2_to_spawn = 0;
+    g_boss1_to_spawn = 0;
+    g_boss2_to_spawn = 0;
 
-    if (g_current_wave == DEMON_START_WAVE)
+    if (g_current_wave == BOSS1_START_WAVE)
     {
-        g_demons_to_spawn = self.demon_maxcount * 2;
+        g_boss1_to_spawn = self.boss1_maxcount * 2;
         g_boss_delay_time = time + 10.0;
     }
-    else if (g_current_wave == TARBABY_START_WAVE)
+    else if (g_current_wave == BOSS2_START_WAVE)
     {
-        g_tars_to_spawn = self.tar_maxcount * 2;
+        g_boss2_to_spawn = self.boss2_maxcount * 2;
         g_boss_delay_time = time + 10.0;
+    }
+    else if (g_current_wave == 20)
+    {
+        g_boss1_to_spawn = floor(self.boss1_maxcount * 2.5);
+        g_boss2_to_spawn = floor(self.boss2_maxcount * 2.5);
+        //g_boss_delay_time = time + 10.0;
+        g_prior1 = ZMONSTER_BOSS2;
+        g_prior2 = ZMONSTER_BOSS1;
+        g_use_prior = TRUE;
+        g_cur_prior = 0;
     }
 };
 
 void() SetupZombieWave =
 {
-    g_dogs_to_spawn = 0;
-    g_spiders_to_spawn = 0;
+    g_weak1_to_spawn = 0;
+    g_weak2_to_spawn = 0;
     g_zombies_to_spawn = 0;
-    g_knights_to_spawn = 0;
-    g_boils_to_spawn = 0;
-    g_demons_to_spawn = 0;
-    g_tars_to_spawn = 0;
+    g_mid1_to_spawn = 0;
+    g_mid2_to_spawn = 0;
+    g_boss1_to_spawn = 0;
+    g_boss2_to_spawn = 0;
 
     g_zombies_to_spawn = floor(RandomBetween(self.zombie_mincount + (1*g_current_wave), self.zombie_maxcount + (2*g_current_wave)));
     g_zombies_to_spawn *= floor(RandomBetween(0.25 * (g_current_wave * 0.5), 0.4 * (g_current_wave * 0.5)));
@@ -141,16 +151,23 @@ void() WaveChanged =
 
     // Decide which type of wave we are gonna have
     g_wave_type = WAVE_DEFAULT;
-    if (g_current_wave == 10 || g_current_wave == 15) {
+    if (g_current_wave == 10 || g_current_wave == 15 || g_current_wave == 20) {
         g_wave_type = WAVE_BOSS;
     }
-    else if (g_current_wave > 10 && lastwave != WAVE_ZOMBIE && (random() < 0.95)) {
+    else if (g_current_wave > 10 && lastwave != WAVE_ZOMBIE && (random() < 0.5)) {
         g_wave_type = WAVE_ZOMBIE;
     }
 
     // Setup monster spawning time
     g_monster_mintime = self.monster_mintime - (0.5 * g_current_wave * RandomBetween(0.5, 1.5));
     g_monster_maxtime = self.monster_maxtime - (0.3 * g_current_wave * RandomBetween(0.5, 1.5));
+
+    // Reset priority state
+    g_prior1 = 0;
+    g_prior2 = 0;
+    g_use_prior = FALSE;
+    g_cur_prior = 0;
+    g_boss_delay_time = 0.0;
 
     // Setup the wave accordingly
     if (g_wave_type == WAVE_BOSS)
@@ -163,25 +180,25 @@ void() WaveChanged =
     g_zombie_health = floor(self.zombie_health + (4 * g_current_wave));
 
     g_zombies_spawned = 0;
-    g_dogs_spawned = 0;
-    g_knights_spawned = 0;
-    g_boils_spawned = 0;
-    g_demons_spawned = 0;
-    g_spiders_spawned = 0;
-    g_tars_spawned = 0;
+    g_weak1_spawned = 0;
+    g_mid1_spawned = 0;
+    g_mid2_spawned = 0;
+    g_boss1_spawned = 0;
+    g_weak2_spawned = 0;
+    g_boss2_spawned = 0;
     g_monsters_spawned = 0;
 
     g_zombies_killed = 0;
-    g_dogs_killed = 0;
-    g_knights_killed = 0;
-    g_boils_killed = 0;
-    g_demons_killed = 0;
-    g_spiders_killed = 0;
-    g_tars_killed = 0;
+    g_weak1_killed = 0;
+    g_mid1_killed = 0;
+    g_mid2_killed = 0;
+    g_boss1_killed = 0;
+    g_weak2_killed = 0;
+    g_boss2_killed = 0;
     g_monsters_killed = 0;
 
     g_monsters_to_spawn = (
-        g_zombies_to_spawn + g_dogs_to_spawn + g_demons_to_spawn + g_knights_to_spawn + g_spiders_to_spawn + g_boils_to_spawn + g_tars_to_spawn
+        g_zombies_to_spawn + g_weak1_to_spawn + g_boss1_to_spawn + g_mid1_to_spawn + g_weak2_to_spawn + g_mid2_to_spawn + g_boss2_to_spawn
     );
 
     g_force_wave_end = 0;
@@ -190,11 +207,11 @@ void() WaveChanged =
     if (g_monster_maxtime < 3.0) g_monster_maxtime = 3.0;
 
     dprint("will spawn ");dprint(ftos(g_zombies_to_spawn));dprint(" zombies\n");
-    dprint("will spawn ");dprint(ftos(g_dogs_to_spawn));dprint(" dogs\n");
-    dprint("will spawn ");dprint(ftos(g_spiders_to_spawn));dprint(" spiders\n");
-    dprint("will spawn ");dprint(ftos(g_boils_to_spawn));dprint(" boils\n");
-    dprint("will spawn ");dprint(ftos(g_knights_to_spawn));dprint(" knights\n");
-    dprint("will spawn ");dprint(ftos(g_demons_to_spawn));dprint(" demons\n");
+    dprint("will spawn ");dprint(ftos(g_weak1_to_spawn));dprint(" dogs\n");
+    dprint("will spawn ");dprint(ftos(g_weak2_to_spawn));dprint(" spiders\n");
+    dprint("will spawn ");dprint(ftos(g_mid2_to_spawn));dprint(" boils\n");
+    dprint("will spawn ");dprint(ftos(g_mid1_to_spawn));dprint(" knights\n");
+    dprint("will spawn ");dprint(ftos(g_boss1_to_spawn));dprint(" demons\n");
 };
 
 void() wavemgr_end_wave =
@@ -215,6 +232,21 @@ void() wavemgr_think =
         wavemgr_end_wave();
         return;
     }
+
+    g_num_players = 0;
+    local float num_players_alive = 0;
+    local entity p = world;
+    while ((p = find(p, classname, "player")))
+    {
+        if (p.health > 0)
+        {
+            num_players_alive = 1;
+            g_num_players = g_num_players + 1;
+            break;
+        }
+    }
+    if (!num_players_alive)
+        localcmd("restart\n");
 
     self.nextthink = time + 1.0;
 
@@ -313,14 +345,16 @@ void() info_wavemgr =
     if (!self.monster_maxtime) self.monster_maxtime = BASE_ZOMBIE_MAXTIME;
     if (!self.zombie_mincount) self.zombie_mincount = BASE_ZOMBIE_MINCOUNT;
     if (!self.zombie_maxcount) self.zombie_maxcount = BASE_ZOMBIE_MAXCOUNT;
-    if (!self.dog_mincount) self.dog_mincount = BASE_DOG_MINCOUNT;
-    if (!self.dog_maxcount) self.dog_maxcount = BASE_DOG_MAXCOUNT;
-    if (!self.spider_mincount) self.spider_mincount = BASE_SPIDER_MINCOUNT;
-    if (!self.spider_maxcount) self.spider_maxcount = BASE_SPIDER_MAXCOUNT;
-    if (!self.boil_mincount) self.boil_mincount = BASE_BOIL_MINCOUNT;
-    if (!self.boil_maxcount) self.boil_maxcount = BASE_BOIL_MAXCOUNT;
-    if (!self.knight_mincount) self.knight_mincount = BASE_KNIGHT_MINCOUNT;
-    if (!self.knight_maxcount) self.knight_maxcount = BASE_KNIGHT_MAXCOUNT;
-    if (!self.demon_mincount) self.demon_mincount = BASE_DEMON_MINCOUNT;
-    if (!self.demon_maxcount) self.demon_maxcount = BASE_DEMON_MAXCOUNT;
+    if (!self.weak1_mincount) self.weak1_mincount = BASE_WEAK1_MINCOUNT;
+    if (!self.weak1_maxcount) self.weak1_maxcount = BASE_WEAK1_MAXCOUNT;
+    if (!self.weak2_mincount) self.weak2_mincount = BASE_WEAK2_MINCOUNT;
+    if (!self.weak2_maxcount) self.weak2_maxcount = BASE_WEAK2_MAXCOUNT;
+    if (!self.mid2_mincount) self.mid2_mincount = BASE_MID2_MINCOUNT;
+    if (!self.mid2_maxcount) self.mid2_maxcount = BASE_MID2_MAXCOUNT;
+    if (!self.mid1_mincount) self.mid1_mincount = BASE_MID1_MINCOUNT;
+    if (!self.mid1_maxcount) self.mid1_maxcount = BASE_MID1_MAXCOUNT;
+    if (!self.boss1_mincount) self.boss1_mincount = BASE_BOSS1_MINCOUNT;
+    if (!self.boss1_maxcount) self.boss1_maxcount = BASE_BOSS1_MAXCOUNT;
+    if (!self.boss2_mincount) self.boss2_mincount = BASE_BOSS2_MINCOUNT;
+    if (!self.boss2_maxcount) self.boss2_maxcount = BASE_BOSS2_MAXCOUNT;
 };
