@@ -197,6 +197,28 @@ void() WaveChanged =
     g_boss2_killed = 0;
     g_monsters_killed = 0;
 
+    // Tweak monster count based on skill
+    local float sk = max(skill, 0.5);
+    g_zombies_to_spawn = floor(g_zombies_to_spawn * sk);
+    g_weak1_to_spawn = floor(g_weak1_to_spawn * sk);
+    g_weak2_to_spawn = floor(g_weak2_to_spawn * sk);
+    g_mid1_to_spawn = floor(g_mid1_to_spawn * sk);
+    g_mid2_to_spawn = floor(g_mid2_to_spawn * sk);
+    g_boss1_to_spawn = floor(g_boss1_to_spawn * sk);
+    g_boss2_to_spawn = floor(g_boss2_to_spawn * sk);
+
+    // Tweak monster count based on number of players
+    if (coop && g_num_players > 1)
+    {
+        g_zombies_to_spawn += floor(self.zombie_mincount * g_current_wave * 0.25 * g_num_players);
+        g_weak1_to_spawn += floor(self.weak1_mincount * g_current_wave * 0.25 * g_num_players);
+        g_weak2_to_spawn += floor(self.weak2_mincount * g_current_wave * 0.25 * g_num_players);
+        g_mid1_to_spawn += floor(self.mid1_mincount * g_current_wave * 0.25 * g_num_players);
+        g_mid2_to_spawn += floor(self.mid2_mincount * g_current_wave * 0.25 * g_num_players);
+        g_boss1_to_spawn += floor(self.boss1_mincount * g_current_wave * 0.25 * g_num_players);
+        g_boss2_to_spawn += floor(self.boss2_mincount * g_current_wave * 0.25 * g_num_players);
+    }
+
     g_monsters_to_spawn = (
         g_zombies_to_spawn + g_weak1_to_spawn + g_boss1_to_spawn + g_mid1_to_spawn + g_weak2_to_spawn + g_mid2_to_spawn + g_boss2_to_spawn
     );

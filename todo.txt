@@ -6,11 +6,11 @@
 -X Boss wave type
 -X Boil monster type
 -X Make boil faster as waves advances
-- Minion wave type (?)
+-X Zombie wave type (?)
+- Difficulty skill
 - Fix and finish Cemetery map
-- Investigate coop gameplay (check everyone is dead and limit respawn and so on)
+-X Investigate coop gameplay (check everyone is dead and limit respawn and so on)
 - Start working on another map (farm?), inspired by DUSK and that map from hwjam2
-- Ask community for feedback
 
 # Polish
 

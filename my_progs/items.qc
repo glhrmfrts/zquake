@@ -722,12 +722,12 @@ void() item_health =
 	// Move the new centered ammo models to match old ammo origin
 	// The default is to move all ammo items to suit original id maps
 	if (query_configflag(SVR_ITEMOFFSET) == FALSE) {
-		self.oldorigin = self.origin + '16 16 0';
-		setorigin(self, self.oldorigin);
+		self.oldorigin = self.origin;// + '16 16 0';
+		//setorigin(self, self.oldorigin);
 	}
 
 	// Setting the angle key in the editor to UP/DOWN/0 = random rotation	
-	if (self.angles_y <= 0) self.angles_y = rint(random()*359);
+	//if (self.angles_y <= 0) self.angles_y = rint(random()*359);
 
 	self.touch2 = health_touch;
 	self.classgroup = CG_HEALTH;
@@ -1544,8 +1544,8 @@ void() item_ammo_setup =
 	// Move the new centered ammo models to match old ammo origin
 	// The default is to move all ammo items to suit original id maps
 	if (!query_configflag(SVR_ITEMOFFSET)) {
-		self.oldorigin = self.origin + '16 16 0';
-		setorigin(self, self.oldorigin);
+		self.oldorigin = self.origin;// + '16 16 0';
+		//setorigin(self, self.oldorigin);
 	}
 
 	// Override the world theme skin type
@@ -1555,7 +1555,7 @@ void() item_ammo_setup =
 	else if (world.worldtype < 2) self.skin = 1;
 
 	// Setting the angle key in the editor to UP/DOWN = random rotation	
-	if (self.angles_y <= 0) self.angles_y = rint(random()*359);
+	// if (self.angles_y <= 0) self.angles_y = rint(random()*359);
 
 	// Setup lid attachment entity (defined in item setup)
 	if (self.spawnflags & A_LID) {

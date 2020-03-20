@@ -3576,7 +3576,7 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 	delay(integer) : "Starting time delay" : 0
 	radius(float) : "Radius that is able to spawn zombies" : 50
 	targetname(string) : "Target name, starts off when non-empty"
-	spider_mincount(float) : "Reference value (for the first wave) to spawn extra spiders"
+	weak2_mincount(float) : "Reference value (for the first wave) to spawn extra spiders"
 ]
 
 @PointClass size(-4 -4 -8, 4 4 12) = info_wavemgr : "Entity that manages the waves advancing"
