@@ -33,7 +33,7 @@ void() SetupWave =
     g_weak2_to_spawn = 0;
     if (g_current_wave >= WEAK2_START_WAVE)
     {
-        if (g_weak1_to_spawn <= WEAK2_START_WAVE)
+        if ((g_weak1_to_spawn <= WEAK2_START_WAVE) || !(self.spawnflags & WAVEMGR_WEAK2_AFRAID))
         {
             g_weak2_to_spawn = floor(RandomBetween(self.weak2_mincount + (0.5*(g_current_wave - WEAK2_START_WAVE)), self.weak2_maxcount + (1*(g_current_wave - WEAK2_START_WAVE))));
         }
@@ -355,6 +355,8 @@ void() info_wavemgr =
     clientstat(STAT_CREDIT, EV_FLOAT, credit);
     clientstat(STAT_CREDITDIFF, EV_FLOAT, creditdiff);
     clientstat(STAT_WAVEACTIVE, EV_FLOAT, waveactive);
+
+    g_monster_flags = self.monsterflags;
 
     self.solid = SOLID_NOT;
     self.movetype = MOVETYPE_NONE;

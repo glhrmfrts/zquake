@@ -3564,7 +3564,7 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 
 @PointClass size(-16 -16 -24, 16 16 32) = info_monster_spawn : "A monster spawner"
 [
-	spawnflags(flags) = [ 
+	spawnflags(flags) = [
 		1 : "No zombie" : 0
 		2 : "No weak 1" : 0
 		4 : "No weak 2" : 0
@@ -3581,6 +3581,29 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 
 @PointClass size(-4 -4 -8, 4 4 12) = info_wavemgr : "Entity that manages the waves advancing"
 [
+	spawnflags(flags) = [
+		1 		: "Weak 2 afraid of Weak 1" : 0
+	]
+	monsterflags(flags) = [ 
+		1 		: "Weak 1 Dog" : 1
+		1 		: "Weak 1 Enforcer" : 0
+		1 		: "Weak 2 Grunt" : 0
+		1 		: "Weak 2 Spider" : 1
+		1 		: "Mid 1 Knight" : 1
+		1 		: "Mid 1 Eliminator" : 1
+		1 		: "Mid 1 Fumigator" : 1
+		1 		: "Mid 1 Defender" : 1
+		1 		: "Mid 1 Pyro" : 1
+		1 		: "Mid 2 Boil" : 1
+		1 		: "Mid 2 Grunt Grenade" : 1
+		1 		: "Mid 2 Grunt Rocket" : 1
+		1 		: "Mid 2 Grunt Plasma" : 1
+		1 		: "Mid 2 Jim" : 1
+		1 		: "Boss 1 Demon": 1
+		1 		: "Boss 1 Freddie": 1
+		1	 	: "Boss 2 Tarbaby" : 1
+		1	 	: "Boss 2 Seeker" : 1
+	]
 	count(integer) : "Start wave number" : 1
 ]
 
@@ -3589,6 +3612,14 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 @SolidClass base(Trigger) = trigger_shop_area : "Trigger: Shop area"
 [
 	target(string) : "info_buy_item to refer to"
+]
+
+@SolidClass = func_jump_pad : "Jump Pad"
+[
+	spawnflags(flags) = [ 
+		1 : "Absolute XY" : 0
+	]
+	velocity(vector) : "Velocity vector of the jump" : "0 0 500"
 ]
 
 @PointClass base(Targetname) size(-4 -4 -8, 4 4 12) = info_buy_item : "Buy some item when used"

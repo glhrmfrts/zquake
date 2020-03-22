@@ -83,73 +83,183 @@ void(vector org) SpawnZombie =
 
 void(vector org) SpawnWeak1 =
 {
-    // Spawn new empty entity to become dog
-    local entity dog = spawn();
-    dog.classname = "monster_dog";
-    dog.origin = org;
-    dog.zmonstertype = ZMONSTER_WEAK1;
-    SetupSpawnedMonster(dog, 0.01, 1, 2, 3);
+    local void() spawn_func;
+    local entity mon = spawn();
+    mon.origin = org;
+    mon.zmonstertype = ZMONSTER_WEAK1;
+
+    local float ok = FALSE;
+    while (!ok)
+    {
+        local float r = random();
+        if ((g_monster_flags & MON_WEAK1_DOG) && r > 0.5)
+        {
+            mon.classname = "monster_dog";
+            spawn_func = monster_dog;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_WEAK1_ENFORCER))
+        {
+            mon.classname = "monster_enforcer";
+            spawn_func = monster_enforcer;
+            ok = TRUE;
+        }
+    }
+    
+    SetupSpawnedMonster(mon, 0.01, 1, 2, 3);
 
     local entity this = self;
-    self = dog;
-    monster_dog();
+    self = mon;
+    spawn_func();
     self = this;
 
     g_weak1_spawned = g_weak1_spawned + 1;
-    self.enemy = dog;
-    bprint("Spawned Dog!\n");
+    self.enemy = mon;
+    bprint("Spawned Weak1!\n");
 };
 
 void(vector org) SpawnWeak2 =
 {
-    local entity spider = spawn();
-    spider.classname = "monster_spider";
-    spider.origin = org;
-    spider.zmonstertype = ZMONSTER_WEAK2;
-    SetupSpawnedMonster(spider, 0.01, 1, 2, 3);
+    local void() spawn_func;
+    local entity mon = spawn();
+    mon.origin = org;
+    mon.zmonstertype = ZMONSTER_WEAK2;
+
+    local float ok = FALSE;
+    while (!ok)
+    {
+        local float r = random();
+        if ((g_monster_flags & MON_WEAK2_GRUNT) && r > 0.5)
+        {
+            mon.classname = "monster_army";
+            spawn_func = monster_army;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_WEAK2_SPIDER))
+        {
+            mon.classname = "monster_spider";
+            spawn_func = monster_spider;
+            ok = TRUE;
+        }
+    }
+
+    SetupSpawnedMonster(mon, 0.01, 1, 2, 3);
 
     local entity this = self;
-    self = spider;
-    monster_spider();
+    self = mon;
+    spawn_func();
     self = this;
 
     g_weak2_spawned = g_weak2_spawned + 1;
-    self.enemy = spider;
-    bprint("Spawned Spider!\n");
+    self.enemy = mon;
+    bprint("Spawned Weak2!\n");
 };
 
 void(vector org) SpawnMid1 =
 {
-    local entity kni = spawn();
-    kni.classname = "monster_knight";
-    kni.origin = org;
-    kni.zmonstertype = ZMONSTER_MID1;
-    SetupSpawnedMonster(kni, 0.03, 2, 3, 5);
-
-    local entity this = self;
-    self = kni;
-    monster_knight();
-    self = this;
-
-    g_mid1_spawned = g_mid1_spawned + 1;
-    self.enemy = kni;
-    bprint("Spawned Knight!\n");
-};
-
-void(vector org) SpawnMid2 =
-{
+    local void() spawn_func;
     local entity mon = spawn();
-    mon.classname = "monster_boil";
     mon.origin = org;
-    mon.zmonstertype = ZMONSTER_MID2;
-    if (random() < 0.2)
-        mon.poisonous = TRUE;
+    mon.zmonstertype = ZMONSTER_MID1;
+
+    local float ok = FALSE;
+    while (!ok)
+    {
+        local float r = random();
+        if ((g_monster_flags & MON_MID1_KNIGHT) && r > 0.8)
+        {
+            mon.classname = "monster_knight";
+            spawn_func = monster_knight;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_MID1_ELIMINATOR) && r > 0.6)
+        {
+            mon.classname = "monster_eliminator";
+            spawn_func = monster_eliminator;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_MID1_FUMIGATOR) && r > 0.4)
+        {
+            mon.classname = "monster_fumigator";
+            spawn_func = monster_fumigator;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_MID1_DEFENDER) && r > 0.2)
+        {
+            mon.classname = "monster_defender";
+            spawn_func = monster_defender;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_MID1_PYRO))
+        {
+            mon.classname = "monster_pyro";
+            spawn_func = monster_pyro;
+            ok = TRUE;
+        }
+    }
 
     SetupSpawnedMonster(mon, 0.03, 2, 3, 5);
 
     local entity this = self;
     self = mon;
-    monster_boil();
+    spawn_func();
+    self = this;
+
+    g_mid1_spawned = g_mid1_spawned + 1;
+    self.enemy = mon;
+    bprint("Spawned Knight!\n");
+};
+
+void(vector org) SpawnMid2 =
+{
+    local void() spawn_func;
+    local entity mon = spawn();
+    mon.origin = org;
+    mon.zmonstertype = ZMONSTER_MID2;
+
+    local float ok = FALSE;
+    while (!ok)
+    {
+        local float r = random();
+        if ((g_monster_flags & MON_MID2_BOIL) && r > 0.8)
+        {
+            mon.classname = "monster_boil";
+            spawn_func = monster_boil;
+            ok = TRUE;
+            if (random() < 0.2)
+                mon.poisonous = TRUE;
+        }
+        else if ((g_monster_flags & MON_MID2_GRUNT_GRENADE) && r > 0.6)
+        {
+            mon.classname = "monster_army_grenade";
+            spawn_func = monster_army_grenade;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_MID2_GRUNT_ROCKET) && r > 0.4)
+        {
+            mon.classname = "monster_army_rocket";
+            spawn_func = monster_army_rocket;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_MID2_GRUNT_PLASMA) && r > 0.2)
+        {
+            mon.classname = "monster_army_plasma";
+            spawn_func = monster_army_plasma;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_MID2_JIM))
+        {
+            mon.classname = "monster_jim";
+            spawn_func = monster_jim;
+            ok = TRUE;
+        }
+    }
+
+    SetupSpawnedMonster(mon, 0.03, 2, 3, 5);
+
+    local entity this = self;
+    self = mon;
+    spawn_func();
     self = this;
 
     g_mid2_spawned = g_mid2_spawned + 1;

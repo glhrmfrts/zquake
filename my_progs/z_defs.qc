@@ -65,13 +65,40 @@ const float PRICE_SILVER_KEY = 100;
 const float PRICE_GOLD_KEY = 200;
 
 // spawnflags for info_monster_spawn
-const float MONSTERSPAWN_NOZOMBIE = 1;
-const float MONSTERSPAWN_NOWEAK1 = 2;
-const float MONSTERSPAWN_NOWEAK2 = 4;
-const float MONSTERSPAWN_NOMID1 = 8;
-const float MONSTERSPAWN_NOMID2 = 16;
-const float MONSTERSPAWN_NOBOSS1 = 32;
-const float MONSTERSPAWN_NOBOSS2 = 64;
+enumflags {
+    MONSTERSPAWN_NOZOMBIE,
+    MONSTERSPAWN_NOWEAK1 ,
+    MONSTERSPAWN_NOWEAK2 ,
+    MONSTERSPAWN_NOMID1 ,
+    MONSTERSPAWN_NOMID2 ,
+    MONSTERSPAWN_NOBOSS1 ,
+    MONSTERSPAWN_NOBOSS2 ,
+};
+
+// monsters enabled to spawn (wavemgr .monsterflags)
+enumflags {
+    MON_WEAK1_DOG ,
+    MON_WEAK1_ENFORCER,
+    MON_WEAK2_GRUNT,
+    MON_WEAK2_SPIDER,
+    MON_MID1_KNIGHT,
+    MON_MID1_ELIMINATOR ,
+    MON_MID1_FUMIGATOR,
+    MON_MID1_DEFENDER ,
+    MON_MID1_PYRO ,
+    MON_MID2_BOIL,
+    MON_MID2_GRUNT_GRENADE,
+    MON_MID2_GRUNT_ROCKET,
+    MON_MID2_GRUNT_PLASMA,
+    MON_MID2_JIM ,
+    MON_BOSS1_DEMON ,
+    MON_BOSS1_FREDDIE,
+    MON_BOSS2_TARBABY,
+    MON_BOSS2_SEEKER,
+};
+
+// wavemgr spawnflags
+const float WAVEMGR_WEAK2_AFRAID = 1;
 
 // wave types
 const float WAVE_DEFAULT = 0;
@@ -86,6 +113,7 @@ const float ZUMBI_MELEE_RANGE = 65;
 
 // global variables about the current wave
 float g_current_wave;
+float g_monster_flags;
 float g_wave_active;
 float g_wave_type;
 float g_boss_delay_time;
@@ -128,6 +156,8 @@ float g_prior2;
 float g_cur_prior;
 float g_use_prior;
 
+// wavemgr fields
+.float monsterflags;
 .float monster_mintime;
 .float monster_maxtime;
 .float zombie_health;
@@ -145,6 +175,8 @@ float g_use_prior;
 .float boss1_maxcount;
 .float boss2_mincount;
 .float boss2_maxcount;
+
+// monster fields
 .float zmonster; // flag to indicate this is a z-monster
 .float zmonstertype; // specific z-monster type
 

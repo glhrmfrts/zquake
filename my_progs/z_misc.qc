@@ -1,31 +1,32 @@
+const float JUMPPAD_ABSOLUTEXY = 1;
 
-float(entity act) ZDoorShouldOpen =
+.float jump_time;
+
+void() func_jump_pad_touch =
 {
-    bprint(act.classname); bprint("\n");
-    bprint(self.classname); bprint("\n");
+    if (time < other.jump_time) return;
 
-    if (self.classname != "func_buy_door")
-        return TRUE;
-    if (act.classname != "player")
-        return FALSE;
-    if (self.state != STATE_BOTTOM)
-        return TRUE;
+    dprint(other.classname); dprint(" hit jump pad\n");
+    dprint(vtos(self.velocity)); dprint("\n");
 
-    if (act.credit < self.credit)
-    {
-        centerprint(other, strcat("Open door for Q$", ftos(self.credit)));
-        sound (other, CHAN_VOICE, "misc/talk.wav", 1, ATTN_NORM);
-        return FALSE;
-    }
+    if (self.spawnflags & JUMPPAD_ABSOLUTEXY)
+        other.velocity = self.velocity;
+    else
+        other.velocity = other.velocity + self.velocity;
 
-    TakeCredits(act, self.credit);
-    return TRUE;
+    other.velocity_z = self.velocity_z;
+    other.jump_time = time + 0.25;
 };
 
-/*QUAKED func_buy_door
-*/
-void() func_buy_door =
+void() func_jump_pad =
 {
-    self.wait = -1;
-    func_door();
+    self.solid = SOLID_TRIGGER;
+	self.movetype = MOVETYPE_NONE;
+	setmodel (self, self.model);
+	setorigin (self, self.origin);
+	setsize (self, self.mins , self.maxs);
+    self.touch = func_jump_pad_touch;
+    self.attack_finished = 0;
+    if (!self.velocity)
+        self.velocity = '0 0 500';
 };

@@ -1,0 +1,207 @@
+Adding file system path C:\QuakeDev\id1
+Adding file system package PAK0.PAK
+Adding file system package PAK1.PAK
+Loading document from C:\QuakeDev\zquakead\maps\z_cemetery.map
+Adding file system path C:\QuakeDev\id1
+Adding file system package PAK0.PAK
+Adding file system package PAK1.PAK
+Adding file system path C:\QuakeDev\zquakead
+Loaded entity definition file zquake_tb.fgd
+Loading palette file gfx\palette.lmp
+Loaded texture collection '..\wads\QUAKE101.WAD'
+Loaded texture collection '..\wads\AlphaMask.wad'
+Loaded texture collection '..\wads\sky_curse.wad'
+Renderer info: GeForce GTX 1060 3GB/PCIe/SSE2 version 4.6.0 NVIDIA 440.97 from NVIDIA Corporation
+Depth buffer bits: 24
+Multisampling enabled
+Saved C:\QuakeDev\zquakead\maps\z_cemetery.map
+Adding file system path C:\QuakeDev\id1
+Adding file system package PAK0.PAK
+Adding file system package PAK1.PAK
+Creating new document
+Loaded entity definition file Quake.fgd
+Loading palette file gfx\palette.lmp
+Loading palette file gfx\palette.lmp
+Loaded texture collection 'C:\QuakeDev\wads\QUAKE101.WAD'
+Loading palette file gfx\palette.lmp
+Loaded texture collection 'C:\QuakeDev\wads\AD_TFUMA.WAD'
+Loading palette file gfx\palette.lmp
+Loaded texture collection 'C:\QuakeDev\wads\sky_curse.wad'
+Loading palette file gfx\palette.lmp
+Loaded texture collection 'C:\QuakeDev\wads\Train.wad'
+Loading palette file gfx\palette.lmp
+Loaded texture collection 'C:\QuakeDev\wads\prototype_1_2.wad'
+Loading palette file gfx\palette.lmp
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.1.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.2.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.3.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.4.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.5.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.6.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Loaded entity definition file zquake_tb.fgd
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.7.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.8.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Could not load external entity definition file 'C:\QuakeDev\zquakead\zquake_tb.fgd': At line 3596, column 53: Expected string or ':', but got word (raw data: ''0')
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.9.map
+Loaded entity definition file zquake_tb.fgd
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Loaded entity definition file zquake_tb.fgd
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.10.map
+Loaded entity definition file zquake_tb.fgd
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Loaded entity definition file zquake_tb.fgd
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Could not load model progs\armour.mdl: File not found: 'progs\armour.mdl'
+Could not load model progs\artifact_envsuit.mdl: File not found: 'progs\artifact_envsuit.mdl'
+Could not load model progs\artifact_invis.mdl: File not found: 'progs\artifact_invis.mdl'
+Could not load model progs\artifact_pent.mdl: File not found: 'progs\artifact_pent.mdl'
+Could not load model progs\artifact_piercer.mdl: File not found: 'progs\artifact_piercer.mdl'
+Could not load model progs\artifact_sharp.mdl: File not found: 'progs\artifact_sharp.mdl'
+Could not load model progs\artifact_quad.mdl: File not found: 'progs\artifact_quad.mdl'
+Could not load model progs\artifact_tome.mdl: File not found: 'progs\artifact_tome.mdl'
+Could not load model progs\artifact_wetsuit.mdl: File not found: 'progs\artifact_wetsuit.mdl'
+Could not load model progs\w_backpack.mdl: File not found: 'progs\w_backpack.mdl'
+Could not load model progs\ammo_battery0.mdl: File not found: 'progs\ammo_battery0.mdl'
+Could not load model progs\health_25.mdl: File not found: 'progs\health_25.mdl'
+Could not load model progs\key_medieval.mdl: File not found: 'progs\key_medieval.mdl'
+Could not load model progs\ammo_cells0.mdl: File not found: 'progs\ammo_cells0.mdl'
+Could not load model progs\ammo_rockets0.mdl: File not found: 'progs\ammo_rockets0.mdl'
+Could not load model progs\ammo_shells0.mdl: File not found: 'progs\ammo_shells0.mdl'
+Could not load model progs\key_rune1.mdl: File not found: 'progs\key_rune1.mdl'
+Could not load model progs\ammo_nails0.mdl: File not found: 'progs\ammo_nails0.mdl'
+Could not load model progs\mon_demon.mdl: File not found: 'progs\mon_demon.mdl'
+Could not load model progs\mon_dknight.mdl: File not found: 'progs\mon_dknight.mdl'
+Could not load model progs\explode_box1.mdl: File not found: 'progs\explode_box1.mdl'
+Could not load model progs\explode_box2.mdl: File not found: 'progs\explode_box2.mdl'
+Could not load model progs\misc_player.mdl: File not found: 'progs\misc_player.mdl'
+Could not load model progs\misc_smoke.mdl: File not found: 'progs\misc_smoke.mdl'
+Could not load model progs\mon_soldier.mdl: File not found: 'progs\mon_soldier.mdl'
+Could not load model progs\mon_bossboglord.mdl: File not found: 'progs\mon_bossboglord.mdl'
+Could not load model progs\mon_boil.mdl: File not found: 'progs\mon_boil.mdl'
+Could not load model progs\mon_bosschthon.mdl: File not found: 'progs\mon_bosschthon.mdl'
+Could not load model progs\mon_centurion.mdl: File not found: 'progs\mon_centurion.mdl'
+Could not load model progs\mon_dcrossbow.mdl: File not found: 'progs\mon_dcrossbow.mdl'
+Could not load model progs\mon_enforcer.mdl: File not found: 'progs\mon_enforcer.mdl'
+Could not load model progs\mon_dfury.mdl: File not found: 'progs\mon_dfury.mdl'
+Could not load model progs\mon_dguard.mdl: File not found: 'progs\mon_dguard.mdl'
+Could not load model progs\mon_dog.mdl: File not found: 'progs\mon_dog.mdl'
+Could not load model progs\mon_drole.mdl: File not found: 'progs\mon_drole.mdl'
+Could not load model progs\mon_dsergeant.mdl: File not found: 'progs\mon_dsergeant.mdl'
+Could not load model progs\mon_eel.mdl: File not found: 'progs\mon_eel.mdl'
+Could not load model progs\mon_bosseidolon.mdl: File not found: 'progs\mon_bosseidolon.mdl'
+Could not load model progs\mon_fish.mdl: File not found: 'progs\mon_fish.mdl'
+Could not load model progs\mon_freddie.mdl: File not found: 'progs\mon_freddie.mdl'
+Could not load model progs\mon_fumigator.mdl: File not found: 'progs\mon_fumigator.mdl'
+Could not load model progs\mon_gargoyle.mdl: File not found: 'progs\mon_gargoyle.mdl'
+Could not load model progs\mon_gaunt.mdl: File not found: 'progs\mon_gaunt.mdl'
+Could not load model progs\mon_golem.mdl: File not found: 'progs\mon_golem.mdl'
+Could not load model progs\mon_hknight.mdl: File not found: 'progs\mon_hknight.mdl'
+Could not load model progs\mon_hogre.mdl: File not found: 'progs\mon_hogre.mdl'
+Could not load model progs\mon_hogreham.mdl: File not found: 'progs\mon_hogreham.mdl'
+Could not load model progs\mon_hogremac.mdl: File not found: 'progs\mon_hogremac.mdl'
+Could not load model progs\mon_bossicegolem.mdl: File not found: 'progs\mon_bossicegolem.mdl'
+Could not load model progs\mon_jim.mdl: File not found: 'progs\mon_jim.mdl'
+Could not load model progs\mon_knight.mdl: File not found: 'progs\mon_knight.mdl'
+Could not load model progs\mon_lostsoul.mdl: File not found: 'progs\mon_lostsoul.mdl'
+Could not load model progs\mon_minotaur.mdl: File not found: 'progs\mon_minotaur.mdl'
+Could not load model progs\mon_zombie.mdl: File not found: 'progs\mon_zombie.mdl'
+Could not load model progs\mon_bossnour.mdl: File not found: 'progs\mon_bossnour.mdl'
+Could not load model progs\mon_ogre.mdl: File not found: 'progs\mon_ogre.mdl'
+Could not load model progs\mon_ogrefish.mdl: File not found: 'progs\mon_ogrefish.mdl'
+Could not load model progs\mon_pyro.mdl: File not found: 'progs\mon_pyro.mdl'
+Could not load model progs\mon_scorpion.mdl: File not found: 'progs\mon_scorpion.mdl'
+Could not load model progs\mon_seeker.mdl: File not found: 'progs\mon_seeker.mdl'
+Could not load model progs\mon_shalrath.mdl: File not found: 'progs\mon_shalrath.mdl'
+Could not load model progs\mon_voreling.mdl: File not found: 'progs\mon_voreling.mdl'
+Could not load model progs\mon_shambler.mdl: File not found: 'progs\mon_shambler.mdl'
+Could not load model progs\mon_skullwiz.mdl: File not found: 'progs\mon_skullwiz.mdl'
+Could not load model progs\mon_spiderb.mdl: File not found: 'progs\mon_spiderb.mdl'
+Could not load model progs\mon_swampling.mdl: File not found: 'progs\mon_swampling.mdl'
+Could not load model progs\mon_tarbaby.mdl: File not found: 'progs\mon_tarbaby.mdl'
+Could not load model progs\mon_wraith.mdl: File not found: 'progs\mon_wraith.mdl'
+Could not load model progs\mon_zombiek.mdl: File not found: 'progs\mon_zombiek.mdl'
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.11.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Saved C:\QuakeDev\zquakead\maps\z_factory.map
+Loaded entity definition file zquake_tb.fgd
+Could not load model progs\mon_soldier.mdl: File not found: 'progs\mon_soldier.mdl'
+Could not load model progs\mon_bossboglord.mdl: File not found: 'progs\mon_bossboglord.mdl'
+Could not load model progs\mon_boil.mdl: File not found: 'progs\mon_boil.mdl'
+Could not load model progs\mon_bosschthon.mdl: File not found: 'progs\mon_bosschthon.mdl'
+Could not load model progs\mon_centurion.mdl: File not found: 'progs\mon_centurion.mdl'
+Could not load model progs\mon_dcrossbow.mdl: File not found: 'progs\mon_dcrossbow.mdl'
+Could not load model progs\mon_enforcer.mdl: File not found: 'progs\mon_enforcer.mdl'
+Could not load model progs\mon_demon.mdl: File not found: 'progs\mon_demon.mdl'
+Could not load model progs\mon_dfury.mdl: File not found: 'progs\mon_dfury.mdl'
+Could not load model progs\mon_dguard.mdl: File not found: 'progs\mon_dguard.mdl'
+Could not load model progs\mon_dknight.mdl: File not found: 'progs\mon_dknight.mdl'
+Could not load model progs\mon_dog.mdl: File not found: 'progs\mon_dog.mdl'
+Could not load model progs\mon_drole.mdl: File not found: 'progs\mon_drole.mdl'
+Could not load model progs\mon_dsergeant.mdl: File not found: 'progs\mon_dsergeant.mdl'
+Could not load model progs\mon_eel.mdl: File not found: 'progs\mon_eel.mdl'
+Could not load model progs\mon_bosseidolon.mdl: File not found: 'progs\mon_bosseidolon.mdl'
+Could not load model progs\mon_fish.mdl: File not found: 'progs\mon_fish.mdl'
+Could not load model progs\mon_freddie.mdl: File not found: 'progs\mon_freddie.mdl'
+Could not load model progs\mon_fumigator.mdl: File not found: 'progs\mon_fumigator.mdl'
+Could not load model progs\mon_gargoyle.mdl: File not found: 'progs\mon_gargoyle.mdl'
+Could not load model progs\mon_gaunt.mdl: File not found: 'progs\mon_gaunt.mdl'
+Could not load model progs\mon_golem.mdl: File not found: 'progs\mon_golem.mdl'
+Could not load model progs\mon_hknight.mdl: File not found: 'progs\mon_hknight.mdl'
+Could not load model progs\mon_hogre.mdl: File not found: 'progs\mon_hogre.mdl'
+Could not load model progs\mon_hogreham.mdl: File not found: 'progs\mon_hogreham.mdl'
+Could not load model progs\mon_hogremac.mdl: File not found: 'progs\mon_hogremac.mdl'
+Could not load model progs\mon_bossicegolem.mdl: File not found: 'progs\mon_bossicegolem.mdl'
+Could not load model progs\mon_jim.mdl: File not found: 'progs\mon_jim.mdl'
+Could not load model progs\mon_knight.mdl: File not found: 'progs\mon_knight.mdl'
+Could not load model progs\mon_lostsoul.mdl: File not found: 'progs\mon_lostsoul.mdl'
+Could not load model progs\mon_minotaur.mdl: File not found: 'progs\mon_minotaur.mdl'
+Could not load model progs\mon_zombie.mdl: File not found: 'progs\mon_zombie.mdl'
+Could not load model progs\mon_bossnour.mdl: File not found: 'progs\mon_bossnour.mdl'
+Could not load model progs\mon_ogre.mdl: File not found: 'progs\mon_ogre.mdl'
+Could not load model progs\mon_ogrefish.mdl: File not found: 'progs\mon_ogrefish.mdl'
+Could not load model progs\mon_pyro.mdl: File not found: 'progs\mon_pyro.mdl'
+Could not load model progs\mon_scorpion.mdl: File not found: 'progs\mon_scorpion.mdl'
+Could not load model progs\mon_seeker.mdl: File not found: 'progs\mon_seeker.mdl'
+Could not load model progs\mon_shalrath.mdl: File not found: 'progs\mon_shalrath.mdl'
+Could not load model progs\mon_voreling.mdl: File not found: 'progs\mon_voreling.mdl'
+Could not load model progs\mon_shambler.mdl: File not found: 'progs\mon_shambler.mdl'
+Could not load model progs\mon_skullwiz.mdl: File not found: 'progs\mon_skullwiz.mdl'
+Could not load model progs\mon_spiderb.mdl: File not found: 'progs\mon_spiderb.mdl'
+Could not load model progs\mon_swampling.mdl: File not found: 'progs\mon_swampling.mdl'
+Could not load model progs\mon_tarbaby.mdl: File not found: 'progs\mon_tarbaby.mdl'
+Could not load model progs\mon_wraith.mdl: File not found: 'progs\mon_wraith.mdl'
+Could not load model progs\mon_zombiek.mdl: File not found: 'progs\mon_zombiek.mdl'
+Created autosave backup at C:\QuakeDev\zquakead\maps\autosave\z_factory.12.map
+Loaded entity definition file zquake_tb.fgd
