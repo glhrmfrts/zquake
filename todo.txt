@@ -10,7 +10,7 @@
 - Difficulty skill
 - Fix and finish Cemetery map
 -X Investigate coop gameplay (check everyone is dead and limit respawn and so on)
-- Start working on another map (farm?), inspired by DUSK and that map from hwjam2
+- Start working on another map (farm, factory?)
 
 # Polish
 

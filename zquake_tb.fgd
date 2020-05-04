@@ -3560,7 +3560,7 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 //This file was edited with Notepad2 MOD with Theme "C/C++ Source Code"
 
 
-////////////////////// zquake project entities //////////////////////
+////////////////////// zquake entities //////////////////////
 
 @PointClass size(-16 -16 -24, 16 16 32) = info_monster_spawn : "A monster spawner"
 [
@@ -3584,27 +3584,37 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 	spawnflags(flags) = [
 		1 		: "Weak 2 afraid of Weak 1" : 0
 	]
-	monsterflags(flags) = [ 
-		1 		: "Weak 1 Dog" : 1
-		1 		: "Weak 1 Enforcer" : 0
-		1 		: "Weak 2 Grunt" : 0
-		1 		: "Weak 2 Spider" : 1
-		1 		: "Mid 1 Knight" : 1
-		1 		: "Mid 1 Eliminator" : 1
-		1 		: "Mid 1 Fumigator" : 1
-		1 		: "Mid 1 Defender" : 1
-		1 		: "Mid 1 Pyro" : 1
-		1 		: "Mid 2 Boil" : 1
-		1 		: "Mid 2 Grunt Grenade" : 1
-		1 		: "Mid 2 Grunt Rocket" : 1
-		1 		: "Mid 2 Grunt Plasma" : 1
-		1 		: "Mid 2 Jim" : 1
-		1 		: "Boss 1 Demon": 1
-		1 		: "Boss 1 Freddie": 1
-		1	 	: "Boss 2 Tarbaby" : 1
-		1	 	: "Boss 2 Seeker" : 1
-	]
 	count(integer) : "Start wave number" : 1
+]
+
+@PointClass size(-4 -4 -8, 4 4 12) = info_monster_flags : "Flags for enabling/disabling monsters"
+[
+	spawnflags(flags) = [ 
+		1 			: "Weak 1 Dog" : 1
+		2 			: "Weak 1 Enforcer" : 0
+		4 			: "Weak 2 Grunt" : 0
+		8 			: "Weak 2 Spider" : 1
+		16 			: "Mid 1 Knight" : 1
+		32 			: "Mid 1 Eliminator" : 1
+		64 			: "Mid 1 Fumigator" : 1
+		128 		: "Mid 1 Defender" : 1
+		
+		256 		: "Reserved (Not Easy)" : 1
+		512 		: "Reserved (Not Normal)" : 1
+		1024 		: "Reserved (Not Hard)" : 1
+		2048 		: "Reserved (Not Deathmatch)" : 1
+
+		4096 		: "Mid 1 Pyro" : 1
+		8192		: "Mid 2 Boil" : 1
+		16384 		: "Mid 2 Grunt Grenade" : 1
+		32768 		: "Mid 2 Grunt Rocket" : 1
+		65536 		: "Mid 2 Grunt Plasma" : 1
+		131072 		: "Mid 2 Jim" : 1
+		262144 		: "Boss 1 Demon": 1
+		524288 		: "Boss 1 Freddie": 1
+		1048576	 	: "Boss 2 Tarbaby" : 1
+		2097152	 	: "Boss 2 Seeker" : 1
+	]
 ]
 
 @PointClass base(Monster) size(-16 -16 -24, 16 16 32) studio({ "path": ":progs/zombie.mdl","skin" : skin, "frame" : frame}) = monster_zumbi : "Custom zombie for zquake mod" []

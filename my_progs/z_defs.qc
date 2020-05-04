@@ -42,6 +42,7 @@ const float MID1_START_WAVE = 8;
 const float BOSS1_START_WAVE = 10;
 const float BOSS2_START_WAVE = 15;
 
+// .item choices of info_buy_item
 const float ITEM_WEAPON_SUPER_SHOTGUN = 0;
 const float ITEM_WEAPON_NAILGUN = 1;
 const float ITEM_WEAPON_RANDOM = 2;
@@ -75,7 +76,7 @@ enumflags {
     MONSTERSPAWN_NOBOSS2 ,
 };
 
-// monsters enabled to spawn (wavemgr .monsterflags)
+// monsters enabled to spawn (.spawnflags of info_monster_flags)
 enumflags {
     MON_WEAK1_DOG ,
     MON_WEAK1_ENFORCER,
@@ -85,6 +86,12 @@ enumflags {
     MON_MID1_ELIMINATOR ,
     MON_MID1_FUMIGATOR,
     MON_MID1_DEFENDER ,
+
+    MON_RESERVED_NOT_EASY,
+    MON_RESERVED_NOT_MEDIUM,
+    MON_RESERVED_NOT_HARD,
+    MON_RESERVED_NOT_DM,
+
     MON_MID1_PYRO ,
     MON_MID2_BOIL,
     MON_MID2_GRUNT_GRENADE,
@@ -157,7 +164,6 @@ float g_cur_prior;
 float g_use_prior;
 
 // wavemgr fields
-.float monsterflags;
 .float monster_mintime;
 .float monster_maxtime;
 .float zombie_health;

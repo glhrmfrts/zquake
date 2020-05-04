@@ -1080,7 +1080,6 @@
 "classname" "info_wavemgr"
 "origin" "12 -588 36"
 "spawnflags" "0"
-"monsterflags" "15846"
 "count" "5"
 "weak1_mincount" "4"
 "weak1_maxcount" "10"
@@ -1090,14 +1089,14 @@
 "classname" "info_monster_spawn"
 "origin" "240 -632 -80"
 "radius" "10"
-"spawnflags" "6"
+"spawnflags" "126"
 }
 // entity 4
 {
 "classname" "info_monster_spawn"
 "origin" "1000 -624 -80"
 "radius" "10"
-"spawnflags" "6"
+"spawnflags" "126"
 }
 // entity 5
 {
@@ -1129,7 +1128,7 @@
 "classname" "info_monster_spawn"
 "origin" "644 -1008 -80"
 "radius" "10"
-"spawnflags" "6"
+"spawnflags" "126"
 }
 // entity 7
 {
@@ -1154,4 +1153,10 @@
 "radius" "10"
 "angle" "90"
 "spawnflags" "1"
+}
+// entity 10
+{
+"classname" "info_monster_flags"
+"origin" "-4 -564 28"
+"spawnflags" "179687"
 }

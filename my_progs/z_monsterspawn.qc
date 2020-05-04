@@ -87,6 +87,8 @@ void(vector org) SpawnWeak1 =
     local entity mon = spawn();
     mon.origin = org;
     mon.zmonstertype = ZMONSTER_WEAK1;
+    
+    dprint("Weak1\n");
 
     local float ok = FALSE;
     while (!ok)
@@ -268,40 +270,76 @@ void(vector org) SpawnMid2 =
 };
 
 void(vector org) SpawnBoss1 =
-{
-    // Spawn new empty entity to become demon
-    local entity de = spawn();
-    de.classname = "monster_demon1";
-    de.origin = org;
-    de.zmonstertype = ZMONSTER_BOSS1;
-    SetupSpawnedMonster(de, 0.07, 10, 15, 20);
+{    
+    local void() spawn_func;
+    local entity mon = spawn();
+    mon.origin = org;
+    mon.zmonstertype = ZMONSTER_BOSS1;
+
+    local float ok = FALSE;
+    while (!ok)
+    {
+        local float r = random();
+        if ((g_monster_flags & MON_BOSS1_DEMON) && r > 0.5)
+        {
+            mon.classname = "monster_demon1";
+            spawn_func = monster_demon1;
+            ok = TRUE;
+        }
+        else if ((g_monster_flags & MON_BOSS1_FREDDIE))
+        {
+            mon.classname = "monster_freddie";
+            spawn_func = monster_freddie;
+            ok = TRUE;
+        }
+    }
+
+    SetupSpawnedMonster(mon, 0.07, 10, 15, 20);
 
     local entity this = self;
-    self = de;
-    monster_demon1();
+    self = mon;
+    spawn_func();
     self = this;
 
     g_boss1_spawned = g_boss1_spawned + 1;
-    self.enemy = de;
+    self.enemy = mon;
     bprint("Spawned Demon!\n");
 };
 
 void(vector org) SpawnBoss2 =
 {
-    // Spawn new empty entity to become demon
-    local entity de = spawn();
-    de.classname = "monster_tarbaby";
-    de.origin = org;
-    de.zmonstertype = ZMONSTER_BOSS2;
-    SetupSpawnedMonster(de, 0.05, 7, 12, 15);
+    local void() spawn_func;
+    local entity mon = spawn();
+    mon.origin = org;
+    mon.zmonstertype = ZMONSTER_BOSS2;
+
+    local float ok = FALSE;
+    while (!ok)
+    {
+        local float r = random();
+        if ((g_monster_flags & MON_BOSS2_TARBABY) && r > 0.5)
+        {
+            mon.classname = "monster_tarbaby";
+            spawn_func = monster_tarbaby;
+            ok = TRUE;
+            SetupSpawnedMonster(mon, 0.05, 7, 12, 15);
+        }
+        else if ((g_monster_flags & MON_BOSS2_SEEKER))
+        {
+            mon.classname = "monster_seeker";
+            spawn_func = monster_seeker;
+            ok = TRUE;
+            SetupSpawnedMonster(mon, 0.09, 12, 18, 25);
+        }
+    }
 
     local entity this = self;
-    self = de;
-    monster_tarbaby();
+    self = mon;
+    spawn_func();
     self = this;
 
     g_boss2_spawned = g_boss2_spawned + 1;
-    self.enemy = de;
+    self.enemy = mon;
     bprint("Spawned Tarbaby!\n");
 };
 

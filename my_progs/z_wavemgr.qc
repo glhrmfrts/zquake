@@ -356,8 +356,6 @@ void() info_wavemgr =
     clientstat(STAT_CREDITDIFF, EV_FLOAT, creditdiff);
     clientstat(STAT_WAVEACTIVE, EV_FLOAT, waveactive);
 
-    g_monster_flags = self.monsterflags;
-
     self.solid = SOLID_NOT;
     self.movetype = MOVETYPE_NONE;
     self.think = wavemgr_start;
@@ -381,4 +379,12 @@ void() info_wavemgr =
     if (!self.boss1_maxcount) self.boss1_maxcount = BASE_BOSS1_MAXCOUNT;
     if (!self.boss2_mincount) self.boss2_mincount = BASE_BOSS2_MINCOUNT;
     if (!self.boss2_maxcount) self.boss2_maxcount = BASE_BOSS2_MAXCOUNT;
+};
+
+
+void() info_monster_flags =
+{
+    g_monster_flags = self.spawnflags;
+    self.solid = SOLID_NOT;
+    self.movetype = MOVETYPE_NONE;
 };
