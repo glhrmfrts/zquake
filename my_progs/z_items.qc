@@ -306,12 +306,12 @@ void() buy_item_use =
         TakeCredits(act, PRICE_MEDKIT);
         self.state = self.state + 1;
     }
-    else if (self.item == ITEM_SILVER_KEY || self.item == ITEM_GOLD_KEY)
+    else if (self.item == ITEM_KEY_SILVER || self.item == ITEM_KEY_GOLD)
     {
-        local float price = PRICE_SILVER_KEY;
-        if (self.item == ITEM_GOLD_KEY) price = PRICE_GOLD_KEY;
+        local float price = PRICE_KEY_SILVER;
+        if (self.item == ITEM_KEY_GOLD) price = PRICE_KEY_GOLD;
 
-        if (act.credit < PRICE_SILVER_KEY)
+        if (act.credit < price)
         {
             centerprint(act, "Not enough cash!");
             return;

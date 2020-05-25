@@ -198,7 +198,7 @@ void() WaveChanged =
     g_monsters_killed = 0;
 
     // Tweak monster count based on skill
-    local float sk = max(skill, 0.5);
+    local float sk = max(skill, 0.5)+0.5;
     g_zombies_to_spawn = floor(g_zombies_to_spawn * sk);
     g_weak1_to_spawn = floor(g_weak1_to_spawn * sk);
     g_weak2_to_spawn = floor(g_weak2_to_spawn * sk);
@@ -236,9 +236,20 @@ void() WaveChanged =
     dprint("will spawn ");dprint(ftos(g_boss1_to_spawn));dprint(" demons\n");
 };
 
+void() RespawnAllClients =
+{
+    local entity cl = world;
+    while ((cl = find(world, classname, "player")))
+    {
+        if (cl.deadflag != DEAD_NO)
+            ClientRespawn();
+    }
+};
+
 void() wavemgr_end_wave =
 {
     g_wave_active = 0;
+    RespawnAllClients();
     CenterPrintAll("Wave completed!\n");
 
     self.attack_finished = 0;
@@ -327,7 +338,7 @@ void() wavemgr_next_wave =
         GiveCredits(player, 10 + (2 * (g_current_wave - 1)));
     }
 
-    self.wait = 5;
+    self.wait = WAVE_COUNTDOWN_SECS;
     self.think = wavemgr_countdown;
     self.nextthink = time + 0.1;
 };
@@ -337,7 +348,7 @@ void() wavemgr_start =
     g_wave_active = 0;
     g_current_wave = self.count - 1;
 
-    self.wait = 5;
+    self.wait = WAVE_COUNTDOWN_SECS;
     self.think = wavemgr_countdown;
     self.nextthink = time + 0.1;
 };

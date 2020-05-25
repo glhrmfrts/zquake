@@ -13,58 +13,84 @@ void() shop_area_touch =
     {
         msg = t.message;
     }
+    else if (t.item == ITEM_WEAPON_SHOTGUN)
+    {
+        if (!(other.items & IT_SHOTGUN))
+        {
+            msg = strcat("Buy Shotgun for Q$", ftos(PRICE_WEAPON_SHOTGUN));
+        }
+        else
+        {
+            msg = strcat("Buy shells for Q$", ftos(PRICE_AMMO_SHELLS));
+        }
+    }
     else if (t.item == ITEM_WEAPON_SUPER_SHOTGUN)
     {
         if (!(other.items & IT_SUPER_SHOTGUN))
         {
-            msg = "Buy Super Shotgun for Q$90";
+            msg = strcat("Buy Super Shotgun for Q$", ftos(PRICE_WEAPON_SUPER_SHOTGUN));
         }
         else
         {
-            msg = "Buy shells for Q$45";
+            msg = strcat("Buy shells for Q$", ftos(PRICE_AMMO_SHELLS));
         }
     }
     else if (t.item == ITEM_WEAPON_NAILGUN)
     {
         if (!(other.items & IT_NAILGUN))
         {
-            msg = "Buy Nailgun for Q$100";
+            msg = strcat("Buy Nailgun for Q$", ftos(PRICE_WEAPON_NAILGUN));
         }
         else
         {
-            msg = "Buy nails for Q$50";
+            msg = strcat("Buy nails for Q$", ftos(PRICE_AMMO_NAILS));
         }
     }
-    else if (t.item == ITEM_WEAPON_NAILGUN)
+    else if (t.item == ITEM_WEAPON_SUPER_NAILGUN)
     {
         if (!(other.items & IT_NAILGUN))
         {
-            msg = "Buy Super Nailgun for Q$125";
+            msg = strcat("Buy Super Nailgun for Q$", ftos(PRICE_WEAPON_SUPER_NAILGUN));
         }
         else
         {
-            msg = "Buy nails for Q$50";
+            msg = strcat("Buy nails for Q$", ftos(PRICE_AMMO_NAILS));
         }
     }
     else if (t.item == ITEM_WEAPON_RANDOM)
     {
-        msg = "Rent weapon for Q$80";
+        msg = strcat("Rent weapon for Q$", ftos(PRICE_WEAPON_RANDOM));
     }
+
     else if (t.item == ITEM_MEDKIT)
     {
-        msg = "Buy medkit for Q$25";
+        msg = strcat("Buy medkit for Q$", ftos(PRICE_MEDKIT));
     }
-    else if (t.item == ITEM_ARMOR_BASIC)
+    else if (t.item == ITEM_MEDKIT_LARGE)
     {
-        msg = "Buy basic armor for Q$50";
+        msg = strcat("Buy large medkit for Q$", ftos(PRICE_MEDKIT_LARGE));
     }
-    else if (t.item == ITEM_SILVER_KEY)
+
+    else if (t.item == ITEM_ARMOR_BLUE)
     {
-        msg = strcat("Buy silver key for Q$", ftos(PRICE_SILVER_KEY));
+        msg = strcat("Buy blue armor for Q$", ftos(PRICE_ARMOR_BLUE));
     }
-    else if (t.item == ITEM_GOLD_KEY)
+    else if (t.item == ITEM_ARMOR_YELLOW)
     {
-        msg = strcat("Buy gold key for Q$", ftos(PRICE_GOLD_KEY));
+        msg = strcat("Buy yellow armor for Q$", ftos(PRICE_ARMOR_YELLOW));
+    }
+    else if (t.item == ITEM_ARMOR_RED)
+    {
+        msg = strcat("Buy red armor for Q$", ftos(PRICE_ARMOR_RED));
+    }
+
+    else if (t.item == ITEM_KEY_SILVER)
+    {
+        msg = strcat("Buy silver key for Q$", ftos(PRICE_KEY_SILVER));
+    }
+    else if (t.item == ITEM_KEY_GOLD)
+    {
+        msg = strcat("Buy gold key for Q$", ftos(PRICE_KEY_GOLD));
     }
 
     centerprint (other, strcat(msg, "\n"));
@@ -73,8 +99,6 @@ void() shop_area_touch =
 
 /*QUAKED trigger_shop_area
 Displays a message with the item available to buy and it's price
--------- KEYS --------
-item    : The item available to buy
 */
 void() trigger_shop_area =
 {

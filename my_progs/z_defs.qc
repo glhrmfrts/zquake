@@ -43,27 +43,54 @@ const float BOSS1_START_WAVE = 10;
 const float BOSS2_START_WAVE = 15;
 
 // .item choices of info_buy_item
-const float ITEM_WEAPON_SUPER_SHOTGUN = 0;
-const float ITEM_WEAPON_NAILGUN = 1;
-const float ITEM_WEAPON_RANDOM = 2;
-const float ITEM_MEDKIT = 3;
-const float ITEM_ARMOR_BASIC = 4;
-const float ITEM_ARMOR_MEDIUM = 5;
-const float ITEM_WEAPON_SUPER_NAILGUN = 6;
-const float ITEM_SILVER_KEY = 7;
-const float ITEM_GOLD_KEY = 8;
+enum {
+    ITEM_WEAPON_SHOTGUN,
+    ITEM_WEAPON_SUPER_SHOTGUN,
+    ITEM_WEAPON_WIDOWMAKER,
+    ITEM_WEAPON_NAILGUN,
+    ITEM_WEAPON_SUPER_NAILGUN,
+    ITEM_WEAPON_GRENADE_LAUNCHER,
+    ITEM_WEAPON_ROCKET_LAUNCHER,
+    ITEM_WEAPON_PLASMA_GUN,
+    ITEM_WEAPON_LIGHTING_GUN,
+    ITEM_WEAPON_RANDOM,
 
-const float PRICE_WEAPON_SUPER_SHOTGUN = 90;
+    ITEM_MEDKIT,
+    ITEM_MEDKIT_LARGE,
+
+    ITEM_ARMOR_BLUE,
+    ITEM_ARMOR_YELLOW,
+    ITEM_ARMOR_RED,
+
+    ITEM_KEY_SILVER,
+    ITEM_KEY_GOLD
+};
+
+const float PRICE_WEAPON_SHOTGUN = 40;
+const float PRICE_WEAPON_SUPER_SHOTGUN = 80;
+const float PRICE_WEAPON_WIDOWMAKER = 120;
 const float PRICE_WEAPON_NAILGUN = 100;
-const float PRICE_WEAPON_SUPER_NAILGUN = 125;
+const float PRICE_WEAPON_SUPER_NAILGUN = 140;
+const float PRICE_WEAPON_GRENADE_LAUNCHER = 150;
+const float PRICE_WEAPON_ROCKET_LAUNCHER = 180;
+const float PRICE_WEAPON_PLASMA_GUN = 200;
+const float PRICE_WEAPON_LIGHTING_GUN = 250;
 const float PRICE_WEAPON_RANDOM = 80;
-const float PRICE_AMMO_SHELLS = 45;
+
+const float PRICE_AMMO_SHELLS = 40;
 const float PRICE_AMMO_NAILS = 50;
+const float PRICE_AMMO_ROCKETS = 80;
+const float PRICE_AMMO_CELLS = 100;
+
 const float PRICE_MEDKIT = 25;
-const float PRICE_ARMOR_BASIC = 50;
-const float PRICE_ARMOR_MEDIUM = 60;
-const float PRICE_SILVER_KEY = 100;
-const float PRICE_GOLD_KEY = 200;
+const float PRICE_MEDKIT_LARGE = 45;
+
+const float PRICE_ARMOR_BLUE = 30;
+const float PRICE_ARMOR_YELLOW = 100;
+const float PRICE_ARMOR_RED = 180;
+
+const float PRICE_KEY_SILVER = 100;
+const float PRICE_KEY_GOLD = 200;
 
 // spawnflags for info_monster_spawn
 enumflags {
@@ -103,6 +130,8 @@ enumflags {
     MON_BOSS2_TARBABY,
     MON_BOSS2_SEEKER,
 };
+
+const float WAVE_COUNTDOWN_SECS = 5;
 
 // wavemgr spawnflags
 const float WAVEMGR_WEAK2_AFRAID = 1;
