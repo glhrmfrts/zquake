@@ -3636,15 +3636,26 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 [
 	item(choices) : "Item" : 0 =
 	[
-		0 : "Super Shotgun"
-		1 : "Nailgun"
-		2 : "Random weapon"
-		3 : "Medkit"
-		4 : "Basic armor"
-		5 : "Medium armor"
-		6 : "Super Nailgun"
-		7 : "Silver Key"
-		8 : "Gold Key"
+		0 : "Shotgun"
+		1 : "Super Shotgun"
+		2 : "Widowmaker"
+		4 : "Nailgun"
+		5 : "Super Nailgun"
+		6 : "Grenade Launcher"
+		7 : "Rocket Launcher"
+		8 : "Plasma Gun"
+		9 : "Lighting Gun"
+		10 : "Random Weapon"
+
+		11 : "Medkit"
+		12 : "Large Medkit"
+
+		13 : "Blue armor"
+		14 : "Yellow armor"
+		15 : "Red armor"
+
+		16 : "Silver Key"
+		17 : "Gold Key"
 	]
 	count(integer) : "Number of times that players can buy this item" : -1
 	message(string) : "Message to display when players cannot buy this item anymore"

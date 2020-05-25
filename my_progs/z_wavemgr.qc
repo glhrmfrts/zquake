@@ -242,7 +242,12 @@ void() RespawnAllClients =
     while ((cl = find(world, classname, "player")))
     {
         if (cl.deadflag != DEAD_NO)
+        {
+            local entity this = self;
+            self = cl;
             ClientRespawn();
+            self = this;
+        }
     }
 };
 
