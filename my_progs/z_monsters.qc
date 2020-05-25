@@ -8,9 +8,15 @@ void(float weapon) SetMonsterStats =
 	g_monster_pup_chance = self.wavenum + (0.001 * g_current_wave);
 	g_monster_credits = self.credit;
 	if (weapon == IT_AXE)
+	{
 		g_monster_credits = self.creditdifftime;
+		g_monster_pup_chance += 0.05;
+	}
 	else if (weapon == IT_SHOTGUN)
+	{
 		g_monster_credits = self.creditdiff;
+		g_monster_pup_chance += 0.02;
+	}
 
 	// Update counters
 	if (self.zmonstertype == ZMONSTER_ZOMBIE)

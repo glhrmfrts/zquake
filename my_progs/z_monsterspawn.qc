@@ -11,8 +11,8 @@ void() ms_set_next_think =
     local float next_time = min + (random() * (max - min));
     self.nextthink = time + next_time;
 
-    bprint (ftos(next_time));
-    bprint("\n");
+    //bprint (ftos(next_time));
+    //bprint("\n");
 };
 
 void() ms_use_last_enemy =
@@ -498,6 +498,13 @@ void() ms_think =
     if (spawned)
     {
         g_monsters_spawned = g_monsters_spawned + 1;
+        if (self.style == MONSTERSPAWN_STYLE_TELEPORT || self.style == MONSTERSPAWN_STYLE_TELEPORT_NOSOUND)
+        {
+            spawn_tfog(self.enemy.origin);
+            if (self.style != MONSTERSPAWN_STYLE_TELEPORT_NOSOUND)
+                play_teleport();
+        }
+
         // TODO: bug?
         // monster_update_total(0.5);
     }
@@ -545,6 +552,7 @@ void() info_monster_spawn =
     setsize(self, '0 0 0', '0 0 0');
 
     if (!self.radius) self.radius = 50;
+    if (!self.style) self.style = MONSTERSPAWN_STYLE_NONE;
     if (!self.state) return;
 
     ms_set_next_think();

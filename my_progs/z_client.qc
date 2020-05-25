@@ -10,7 +10,7 @@ void() ZClientSpectate =
         if (whospec.health > 0 && whospec != self && whospec != self.clientcamera)
         {
             self.clientcamera = whospec;
-            centerprint(self, strcat("Spectating ", whospec.netname));
+            centerprint(self, strcat("Spectating ", whospec.netname, "\n"));
             break;
         }
     }

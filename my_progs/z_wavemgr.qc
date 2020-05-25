@@ -198,7 +198,7 @@ void() WaveChanged =
     g_monsters_killed = 0;
 
     // Tweak monster count based on skill
-    local float sk = max(skill, 0.5)+0.5;
+    local float sk = max(skill, 0.5);
     g_zombies_to_spawn = floor(g_zombies_to_spawn * sk);
     g_weak1_to_spawn = floor(g_weak1_to_spawn * sk);
     g_weak2_to_spawn = floor(g_weak2_to_spawn * sk);
@@ -238,8 +238,10 @@ void() WaveChanged =
 
 void() RespawnAllClients =
 {
+    if (!coop) return;
+    
     local entity cl = world;
-    while ((cl = find(world, classname, "player")))
+    while ((cl = find(cl, classname, "player")))
     {
         if (cl.deadflag != DEAD_NO)
         {

@@ -103,6 +103,10 @@ enumflags {
     MONSTERSPAWN_NOBOSS2 ,
 };
 
+const float MONSTERSPAWN_STYLE_NONE = 0;
+const float MONSTERSPAWN_STYLE_TELEPORT = 1;
+const float MONSTERSPAWN_STYLE_TELEPORT_NOSOUND = 2;
+
 // monsters enabled to spawn (.spawnflags of info_monster_flags)
 enumflags {
     MON_WEAK1_DOG ,

@@ -3573,6 +3573,13 @@ exactskin >= 1 -> 	{"path": "progs/mon_shalrath.mdl", "skin": exactskin},
 		32 : "No boss 1" : 0
 		64 : "No boss 2" : 0
 	]
+	style(choices) : "Effect for spawning monster" : 0 =
+	[
+		0 : "No effect"
+		1 : "Teleport"
+		2 : "Teleport no sound"
+		3 : "Monster comes out of the ground"
+	]
 	delay(integer) : "Starting time delay" : 0
 	radius(float) : "Radius that is able to spawn zombies" : 50
 	targetname(string) : "Target name, starts off when non-empty"

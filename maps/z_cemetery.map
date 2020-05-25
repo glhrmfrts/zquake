@@ -5717,7 +5717,7 @@
 ( 4408 -184 208 ) ( 4432 -184 208 ) ( 4432 -72 208 ) trigger 0 0 0 1 1
 ( 4432 -72 264 ) ( 4432 -184 264 ) ( 4408 -184 264 ) trigger 0 0 0 1 1
 ( 4432 -72 208 ) ( 4432 -72 264 ) ( 4408 -72 264 ) trigger 0 0 0 1 1
-( 4432 -72 208 ) ( 4432 -184 208 ) ( 4432 -184 264 ) trigger 0 0 0 1 1
+( 4624 -72 208 ) ( 4624 -184 208 ) ( 4624 -184 264 ) trigger 0 0 0 1 1
 }
 }
 // entity 29
@@ -6137,6 +6137,7 @@
 "origin" "2096 608 -104"
 "radius" "10"
 "spawnflags" "0"
+"style" "1"
 }
 // entity 82
 {
@@ -6145,6 +6146,7 @@
 "angle" "90"
 "radius" "10"
 "spawnflags" "18"
+"style" "1"
 }
 // entity 83
 {
@@ -6167,6 +6169,7 @@
 "angle" "270"
 "spawnflags" "121"
 "radius" "10"
+"style" "0"
 }
 // entity 86
 {
@@ -9525,6 +9528,7 @@
 "angle" "180"
 "spawnflags" "26"
 "targetname" "aftersilverdoor"
+"style" "1"
 }
 // entity 548
 {
@@ -9803,6 +9807,7 @@
 "targetname" "aftersilverdoor"
 "spawnflags" "123"
 "weak2_mincount" "0.5"
+"style" "0"
 }
 // entity 586
 {
@@ -13963,7 +13968,7 @@
 "classname" "func_group"
 "_tb_type" "_tb_layer"
 "_tb_name" "Rain"
-"_tb_id" "15"
+"_tb_id" "23"
 // brush 0
 {
 ( 2816 336 32 ) ( 2816 336 -128 ) ( 2816 384 -128 ) city6_7 -0 -0 180 1 -1
@@ -14340,13 +14345,13 @@
 "waitmin" "-1"
 "wait" "-1"
 "volume" "-1"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 954
 {
 "classname" "misc_drip"
 "origin" "2296 -104 72"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 955
 {
@@ -14354,7 +14359,7 @@
 "origin" "2312 -56 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 956
 {
@@ -14362,7 +14367,7 @@
 "origin" "2296 -24 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 957
 {
@@ -14370,7 +14375,7 @@
 "origin" "2280 8 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 958
 {
@@ -14378,7 +14383,7 @@
 "origin" "2296 40 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 959
 {
@@ -14386,7 +14391,7 @@
 "origin" "2264 72 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 960
 {
@@ -14394,7 +14399,7 @@
 "origin" "2264 104 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 961
 {
@@ -14402,7 +14407,7 @@
 "origin" "2296 136 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 962
 {
@@ -14410,7 +14415,7 @@
 "origin" "2312 104 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 963
 {
@@ -14418,7 +14423,7 @@
 "origin" "2248 136 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 964
 {
@@ -14426,7 +14431,7 @@
 "origin" "2280 168 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 965
 {
@@ -14434,7 +14439,7 @@
 "origin" "2248 200 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 966
 {
@@ -14442,7 +14447,7 @@
 "origin" "2216 168 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 967
 {
@@ -14450,7 +14455,7 @@
 "origin" "2184 136 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 968
 {
@@ -14458,7 +14463,7 @@
 "origin" "2152 104 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 969
 {
@@ -14466,7 +14471,7 @@
 "origin" "2184 72 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 970
 {
@@ -14474,7 +14479,7 @@
 "origin" "2216 40 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 971
 {
@@ -14482,7 +14487,7 @@
 "origin" "2184 8 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 972
 {
@@ -14490,7 +14495,7 @@
 "origin" "2152 -24 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 973
 {
@@ -14498,7 +14503,7 @@
 "origin" "2184 -56 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 974
 {
@@ -14506,7 +14511,7 @@
 "origin" "2216 -88 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 975
 {
@@ -14514,7 +14519,7 @@
 "origin" "2232 -136 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 976
 {
@@ -14522,7 +14527,7 @@
 "origin" "2264 -168 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 977
 {
@@ -14530,7 +14535,7 @@
 "origin" "2296 -200 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 978
 {
@@ -14538,7 +14543,7 @@
 "origin" "2264 -232 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 979
 {
@@ -14546,7 +14551,7 @@
 "origin" "2264 -264 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 980
 {
@@ -14554,7 +14559,7 @@
 "origin" "2296 -296 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 981
 {
@@ -14562,7 +14567,7 @@
 "origin" "2312 -248 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 982
 {
@@ -14570,7 +14575,7 @@
 "origin" "2344 -216 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 983
 {
@@ -14578,7 +14583,7 @@
 "origin" "2376 -184 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 984
 {
@@ -14586,7 +14591,7 @@
 "origin" "2408 -152 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 985
 {
@@ -14594,7 +14599,7 @@
 "origin" "2440 -136 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 986
 {
@@ -14602,7 +14607,7 @@
 "origin" "2472 -152 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 987
 {
@@ -14610,7 +14615,7 @@
 "origin" "2456 -152 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 988
 {
@@ -14618,7 +14623,7 @@
 "origin" "2312 -360 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 989
 {
@@ -14626,7 +14631,7 @@
 "origin" "2344 -440 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 990
 {
@@ -14634,7 +14639,7 @@
 "origin" "2280 -488 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 991
 {
@@ -14642,7 +14647,7 @@
 "origin" "2248 -472 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 992
 {
@@ -14650,7 +14655,7 @@
 "origin" "2216 -504 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 993
 {
@@ -14658,7 +14663,7 @@
 "origin" "2216 -456 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 994
 {
@@ -14666,7 +14671,7 @@
 "origin" "2184 -440 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 995
 {
@@ -14674,7 +14679,7 @@
 "origin" "2216 -424 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 996
 {
@@ -14682,7 +14687,7 @@
 "origin" "2264 -408 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 997
 {
@@ -14690,7 +14695,7 @@
 "origin" "2344 -504 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 998
 {
@@ -14698,7 +14703,7 @@
 "origin" "2232 -536 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 999
 {
@@ -14706,7 +14711,7 @@
 "origin" "2216 -584 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1000
 {
@@ -14714,7 +14719,7 @@
 "origin" "2168 -584 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1001
 {
@@ -14722,7 +14727,7 @@
 "origin" "2120 -552 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1002
 {
@@ -14730,7 +14735,7 @@
 "origin" "2120 -648 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1003
 {
@@ -14738,7 +14743,7 @@
 "origin" "2264 -584 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1004
 {
@@ -14746,7 +14751,7 @@
 "origin" "2328 -584 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1005
 {
@@ -14754,7 +14759,7 @@
 "origin" "2408 -568 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1006
 {
@@ -14762,7 +14767,7 @@
 "origin" "2424 -504 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1007
 {
@@ -14770,7 +14775,7 @@
 "origin" "2184 -168 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1008
 {
@@ -14778,7 +14783,7 @@
 "origin" "2136 -168 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1009
 {
@@ -14786,7 +14791,7 @@
 "origin" "2088 -152 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1010
 {
@@ -14794,7 +14799,7 @@
 "origin" "2072 -104 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1011
 {
@@ -14802,7 +14807,7 @@
 "origin" "2136 -104 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1012
 {
@@ -14810,7 +14815,7 @@
 "origin" "2168 -136 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1013
 {
@@ -14818,7 +14823,7 @@
 "origin" "2136 -56 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1014
 {
@@ -14826,7 +14831,7 @@
 "origin" "2104 8 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1015
 {
@@ -14834,7 +14839,7 @@
 "origin" "2104 72 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1016
 {
@@ -14842,7 +14847,7 @@
 "origin" "2088 120 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1017
 {
@@ -14850,7 +14855,7 @@
 "origin" "2088 168 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1018
 {
@@ -14858,7 +14863,7 @@
 "origin" "2136 168 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1019
 {
@@ -14866,7 +14871,7 @@
 "origin" "2168 184 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1020
 {
@@ -14874,7 +14879,7 @@
 "origin" "2152 72 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1021
 {
@@ -14882,7 +14887,7 @@
 "origin" "2376 -360 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1022
 {
@@ -14890,7 +14895,7 @@
 "origin" "2424 -376 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1023
 {
@@ -14898,7 +14903,7 @@
 "origin" "2392 -408 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1024
 {
@@ -14906,7 +14911,7 @@
 "origin" "2408 -312 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1025
 {
@@ -14914,7 +14919,7 @@
 "origin" "2376 -264 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1026
 {
@@ -14922,7 +14927,7 @@
 "origin" "2344 -296 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1027
 {
@@ -14930,7 +14935,7 @@
 "origin" "2328 -344 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1028
 {
@@ -14938,7 +14943,7 @@
 "origin" "2360 -392 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1029
 {
@@ -14946,7 +14951,7 @@
 "origin" "2248 -344 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1030
 {
@@ -14954,7 +14959,7 @@
 "origin" "2248 -296 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1031
 {
@@ -14965,7 +14970,7 @@
 "waitmin" "-1"
 "wait" "-1"
 "volume" "-1"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1032
 {
@@ -14976,7 +14981,7 @@
 "waitmin" "-1"
 "wait" "-1"
 "volume" "-1"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1033
 {
@@ -14987,7 +14992,7 @@
 "waitmin" "-1"
 "wait" "-1"
 "volume" "-1"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1034
 {
@@ -14998,7 +15003,7 @@
 "waitmin" "-1"
 "wait" "-1"
 "volume" "-1"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1035
 {
@@ -15009,7 +15014,7 @@
 "waitmin" "-1"
 "wait" "-1"
 "volume" "-1"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1036
 {
@@ -15020,13 +15025,13 @@
 "waitmin" "-1"
 "wait" "-1"
 "volume" "-1"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1037
 {
 "classname" "light"
 "origin" "3312 368 -64"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1038
 {
@@ -15035,26 +15040,26 @@
 "light" "300"
 "angle" "180"
 "_color" "247 169 9"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1039
 {
 "classname" "light"
 "origin" "3232 -96 16"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1040
 {
 "classname" "light"
 "origin" "3008 -272 -64"
 "light" "200"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1041
 {
 "classname" "item_health"
 "origin" "2592 16 -120"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1042
 {
@@ -15062,7 +15067,7 @@
 "origin" "2280 232 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1043
 {
@@ -15070,7 +15075,7 @@
 "origin" "2168 232 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1044
 {
@@ -15078,7 +15083,7 @@
 "origin" "2104 232 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1045
 {
@@ -15086,7 +15091,7 @@
 "origin" "2328 216 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1046
 {
@@ -15094,7 +15099,7 @@
 "origin" "2328 264 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1047
 {
@@ -15102,7 +15107,7 @@
 "origin" "2344 296 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1048
 {
@@ -15110,7 +15115,7 @@
 "origin" "2296 312 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1049
 {
@@ -15118,7 +15123,7 @@
 "origin" "2376 200 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1050
 {
@@ -15126,7 +15131,7 @@
 "origin" "2392 248 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1051
 {
@@ -15134,7 +15139,7 @@
 "origin" "2376 296 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1052
 {
@@ -15142,7 +15147,7 @@
 "origin" "2360 376 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1053
 {
@@ -15150,7 +15155,7 @@
 "origin" "2328 408 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1054
 {
@@ -15158,7 +15163,7 @@
 "origin" "2296 440 72"
 "wait" ".02"
 "spawnflags" "6"
-"_tb_layer" "15"
+"_tb_layer" "23"
 }
 // entity 1055
 {
@@ -15167,5 +15172,6 @@
 "radius" "10"
 "angle" "180"
 "spawnflags" "2"
-"_tb_layer" "15"
+"style" "1"
+"_tb_layer" "23"
 }
