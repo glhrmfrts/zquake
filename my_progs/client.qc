@@ -1015,7 +1015,7 @@ void() ClientRespawn =
 	if (coop) {
 		if (!ZCanClientRespawn()) return;
 		
-		CopyToBodyQue (self);	// make a copy of the dead body for appearances sake
+		//CopyToBodyQue (self);	// make a copy of the dead body for appearances sake
 		setspawnparms (self);	// get the spawn parms as they were at level start
 		PutClientInServer ();	// respawn
 		ZClientRespawn(); 		// callback to zquake for setting up money and stuff

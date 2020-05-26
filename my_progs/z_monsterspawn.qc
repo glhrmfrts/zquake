@@ -523,16 +523,26 @@ void() ms_think =
 ==============
 ms_use
 
-Enable the monster spawn
+Enable/disable the monster spawn
 ==============
 */
 void() ms_use =
 {
-    if (self.state) return;
+    if (!(self.spawnflags & MONSTERSPAWN_TOGGLE) && self.state) return;
 
-    self.state = 1;
-    self.think = ms_think;
-    ms_set_next_think();
+    if (self.state)
+    {
+        if (!(self.spawnflags & MONSTERSPAWN_TOGGLE)) return;
+        self.state = 0;
+        self.think = SUB_Null;
+        self.nextthink = -1;
+    }
+    else
+    {
+        self.state = 1;
+        self.think = ms_think;
+        ms_set_next_think();
+    }
 };
 
 /*QUAKED info_monster_spawn (0 0.5 0.8) (-8 -8 -8) (8 8 8) NOZOMBIE NODOG NOKNIGHT NODEMON NOSPIDER
@@ -542,11 +552,11 @@ void() info_monster_spawn =
 {
     self.solid = SOLID_NOT;
     self.movetype = MOVETYPE_NONE;
-    self.think = ms_think;
     self.use = ms_use;
-    self.state = 1;
-    if (self.targetname)
+    if (self.wait)
         self.state = 0;
+    else
+        self.state = 1;
 
     setmodel(self, "");
     setsize(self, '0 0 0', '0 0 0');
@@ -555,5 +565,6 @@ void() info_monster_spawn =
     if (!self.style) self.style = MONSTERSPAWN_STYLE_NONE;
     if (!self.state) return;
 
+    self.think = ms_think;
     ms_set_next_think();
 };

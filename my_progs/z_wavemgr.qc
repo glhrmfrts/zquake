@@ -211,12 +211,24 @@ void() WaveChanged =
     if (coop && g_num_players > 1)
     {
         g_zombies_to_spawn += floor(self.zombie_mincount * g_current_wave * 0.25 * g_num_players);
-        g_weak1_to_spawn += floor(self.weak1_mincount * g_current_wave * 0.25 * g_num_players);
-        g_weak2_to_spawn += floor(self.weak2_mincount * g_current_wave * 0.25 * g_num_players);
-        g_mid1_to_spawn += floor(self.mid1_mincount * g_current_wave * 0.25 * g_num_players);
-        g_mid2_to_spawn += floor(self.mid2_mincount * g_current_wave * 0.25 * g_num_players);
-        g_boss1_to_spawn += floor(self.boss1_mincount * g_current_wave * 0.25 * g_num_players);
-        g_boss2_to_spawn += floor(self.boss2_mincount * g_current_wave * 0.25 * g_num_players);
+
+        if (g_weak1_to_spawn > 0)
+            g_weak1_to_spawn += floor(self.weak1_mincount * g_current_wave * 0.25 * g_num_players);
+
+        if (g_weak2_to_spawn > 0)
+            g_weak2_to_spawn += floor(self.weak2_mincount * g_current_wave * 0.25 * g_num_players);
+
+        if (g_mid1_to_spawn > 0)
+            g_mid1_to_spawn += floor(self.mid1_mincount * g_current_wave * 0.25 * g_num_players);
+
+        if (g_mid2_to_spawn > 0)
+            g_mid2_to_spawn += floor(self.mid2_mincount * g_current_wave * 0.25 * g_num_players);
+
+        if (g_boss1_to_spawn > 0)
+            g_boss1_to_spawn += floor(self.boss1_mincount * g_current_wave * 0.25 * g_num_players);
+
+        if (g_boss2_to_spawn > 0)
+            g_boss2_to_spawn += floor(self.boss2_mincount * g_current_wave * 0.25 * g_num_players);
     }
 
     g_monsters_to_spawn = (
@@ -278,12 +290,9 @@ void() wavemgr_think =
     local entity p = world;
     while ((p = find(p, classname, "player")))
     {
+        g_num_players = g_num_players + 1;
         if (p.health > 0)
-        {
             num_players_alive = 1;
-            g_num_players = g_num_players + 1;
-            break;
-        }
     }
     if (!num_players_alive)
         localcmd("restart\n");
